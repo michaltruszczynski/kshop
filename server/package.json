@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
-    "backend": "nodemon server/index.js",
-    "frontend": "npm --prefix eshop start",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+    "start": "node index.js",
+    "server": "nodemon server"
   },
   "author": "MT",
   "license": "ISC",
