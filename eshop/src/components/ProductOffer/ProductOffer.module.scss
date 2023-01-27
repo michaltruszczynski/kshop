@@ -1,0 +1,27 @@
+@import '../../abstracts/index';
+
+.products {
+      // display: flex;
+      // flex-wrap: wrap;
+      max-width: 94rem;
+      margin: 0 auto;
+      // justify-content: space-evenly;
+      width: fit-content;
+      display: grid;
+      gap: 2rem;
+      grid-auto-flow: row;
+      // grid-auto-rows: max-content;
+      grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: $mediaMDevices) {
+      .products {
+            grid-template-columns: repeat(2, 1fr);
+      }
+}
+
+@media only screen and (max-width: $mediaXSDevices) {
+      .products {
+            grid-template-columns: 1fr;
+      }
+}

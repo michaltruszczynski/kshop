@@ -1,0 +1,56 @@
+$white: #fff;
+$black: #222;
+$pink: #f60091;
+$grey: #444;
+$grey2: #959595;
+$grey-alt: #d1e2e9;
+// $yellow: #ffd800;
+$green: #59b210;
+
+$light-white: #fff;
+$main-white: #f1f1f1;
+$dark-white: #eff5fb;
+$main-dark-blue: #243a6f;
+$main-yellow: #ffe171;
+$main-grey: rgba(255, 255, 255, 0.7); //background
+$main-pink: #ff7c9c;
+$main-blue: #43b3d9; //stars
+$main-black: #0d0f12;
+$main-green: #06ad06; // #71EFA3
+$dark-green: #8ae8a2;
+$light-green: #659c83;
+
+//MainNavigation
+$boxShadowColor: #6655554d;
+$textShadowColor: rgba(0, 0, 0, 0.1);
+$cardBackgroundColor: #ffffffb3;
+
+$inputBorderColor: #ccc;
+$inputBackground: #f9f9f9;
+$inputFontColor: #636c72;
+
+$inputIconColor: #cccccce6;
+$inputIconShadowColor: #cccccc80;
+
+$inputErrorBackground: #fff8f8;
+$inputErrorBorderColor: #d50000;
+$inputErrorFontColor: #d50000;
+$inputErrorPlaceholderFontColor: #e47373;
+
+//Buttons
+$buttonFontWhite: #f1f2f3;
+
+$buttonBackGrGreen: #659c83;
+$buttonBorderGreen: #659c83;
+$buttonBackGrHoverGreen: darken($buttonBackGrGreen , 10%);
+
+$buttonBackGrRed: #fa8171;
+$buttonBorderRed: #fa8171;
+$buttonBackGrHoverRed: darken($buttonBackGrRed, 10%);
+
+
+$buttonBackGrBlue: darkslateblue;
+$buttonBorderBlue: darkslateblue;
+$buttonBackGrHoverBlue: darken($buttonBackGrBlue, 10%);
+
+$buttonActiveFont: #fa8171;

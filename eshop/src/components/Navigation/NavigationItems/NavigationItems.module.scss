@@ -1,0 +1,62 @@
+@import "../../../abstracts/index";
+
+.menu__heading-mobile {
+      display: none;
+}
+
+.logo {
+      &__text {
+            font-size: 2.5rem;
+      }
+}
+
+.nav__list {
+      display: flex;
+      align-items: center;
+      &:not(:last-child) {
+            margin-right: 0.5rem;
+      }
+}
+
+@media only screen and (max-width: $mediaMDevices) {
+      .menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 40rem;
+            height: 100%;
+            background-color: $main-white;
+            transition: all 500ms ease-in-out;
+            z-index: 300;
+
+            &.menu--open-mobile {
+                  left: 0;
+            }
+
+            .nav__list {
+                  flex-direction: column;
+                  align-items: stretch;
+                  padding: 1rem 1.6rem;
+            }
+      }
+
+      .menu__heading-mobile {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $main-dark-blue;
+            padding: 1rem 1.6rem;
+
+            .logo {
+                  color: $main-white;
+            }
+
+            .close-icon {
+                  color: $main-white;
+                  font-size: 3rem;
+                  padding: 1rem;
+                  cursor: pointer;
+            }
+      }
+}

@@ -1,0 +1,47 @@
+@import "../../../abstracts/index";
+
+.filter {
+      display: flex;
+      justify-content: space-between;
+      max-width: 94rem;
+      margin: 0 auto;
+
+      &__group {
+            display: flex;
+      }
+
+      &__name {
+            padding-right: 1rem;
+            min-width: 6rem;
+      }
+
+      &__subgroup {
+            display: flex;
+      }
+
+      &__category {
+            min-width: 20rem;
+
+            &--m-right {
+                  margin-right: 1rem;
+            }
+      }
+}
+
+@media only screen and (max-width: $mediaMDevices) {
+      .filter {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__subgroup {
+                  display: block;
+            }
+
+            &__category {
+                  &--m-right {
+                        margin-right: 0;
+                  }
+            }
+      }
+}

@@ -1,0 +1,11 @@
+.form {
+      max-width: 60rem;
+      margin: 0 auto;
+
+      &__buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            grid-gap: 2rem;
+      }
+}

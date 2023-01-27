@@ -1,0 +1,23 @@
+.button {
+      // margin-top: 1rem;
+      // padding: 0.5rem 1rem;
+      padding: 0.2rem;
+      margin-left: 1rem;
+      align-self: center;
+      min-width: 4.7rem;
+      font-weight: 600;
+      font-size: 1.7rem;
+      border-radius: 0.5rem;
+      display: block;
+      box-sizing: border-box;
+
+      &--green {
+            background-color: #659C83;
+            border: 1px solid #659C83;
+      }
+
+      &--red {
+            background-color: #FA8171;
+            border: 1px solid #FA8171;
+      }
+}

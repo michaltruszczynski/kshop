@@ -1,0 +1,56 @@
+
+@import "../../../../abstracts/index";
+
+.button {
+      min-height: 18rem;
+      max-width: 18rem;
+      padding: 1rem;
+      color: $inputIconColor;
+      border: 1px solid inherit;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $inputIconColor;
+      border-radius: 0.2rem;
+      text-shadow: 4px 4px 5px $inputIconShadowColor;
+      cursor: pointer;
+
+      &--error {
+            box-shadow: 0 0 4px 0 $inputErrorBorderColor;
+            border-color: $inputErrorBorderColor;
+            color: $inputErrorBorderColor;
+      }
+      &--disabled {
+            cursor: not-allowed;
+
+            .add-icon {
+                  &:hover {
+                        font-size: 8rem;
+                  }
+            }
+      }
+
+      &__label {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: inherit;
+            cursor: inherit;
+      }
+}
+
+.add-icon {
+      color: inherit;
+      font-size: 8rem;
+      transition: font-size 0.1s;
+
+      &:hover {
+            font-size: 8.2rem;
+      }
+}
+
+.display-none {
+      display: none;
+}

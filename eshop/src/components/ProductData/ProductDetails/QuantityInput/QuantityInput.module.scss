@@ -1,0 +1,30 @@
+@import "../../../../abstracts/index";
+
+.input {
+      &__button {
+            font-size: 1.4rem;
+            height: 3.7rem;
+            width: 2.8rem;
+            border: 1px solid $inputBorderColor;
+            border-radius: 0;
+            font-weight: 400;
+            background-color: $inputBackground;
+            text-align: center;
+            &:hover {
+                  cursor: pointer;
+            }
+      }
+
+      &__quantity {
+            font-weight: 700;
+            font-size: 1.6rem;
+            height: 3.7rem;
+            width: 4.4rem;
+            padding: 0.8rem 0;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-left: 0;
+            border-right: 0;
+      }
+}

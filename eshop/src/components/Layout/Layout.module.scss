@@ -1,0 +1,19 @@
+@import "../../abstracts";
+
+.main-section {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+}
+
+.header {
+      display: flex;
+      // height: 2px;
+}
+.main {
+      flex-grow: 1;
+}
+
+.footer {
+      background-color: $main-black;
+}

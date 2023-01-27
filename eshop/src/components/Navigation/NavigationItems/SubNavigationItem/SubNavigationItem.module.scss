@@ -1,0 +1,45 @@
+@import "../../../../abstracts/index";
+
+.container {
+      position: absolute;
+      // bottom: -11.6rem;
+      top: 100%;
+      max-height: 0;
+      box-sizing: border-box;
+      width: max-content;
+      background-color: $main-dark-blue;
+      overflow: hidden;
+      box-shadow: 1px 1px 7px $boxShadowColor, -1px 0px 7px $boxShadowColor;
+      transition: 0.3s ease-in;
+
+      &--open {
+            max-height: 30rem
+      }
+}
+
+
+.sublink {
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      background-color: $main-dark-blue;
+
+      &__item {
+            // border: 1px solid $main-white;
+      }
+
+      &__link {
+            display: block;
+            text-decoration: none;
+            padding: 1rem 1.4rem;
+            color: $main-white;
+      }
+}
+
+@media only screen and (max-width: $mediaMDevices) { 
+      .container { 
+            position: relative;
+            width: 100%;
+      }
+
+}

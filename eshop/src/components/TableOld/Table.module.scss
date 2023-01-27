@@ -1,0 +1,108 @@
+@import "../../abstracts/index";
+
+@mixin break {
+      .table {
+            &__heading {
+                  display: none;
+            }
+
+            &__row {
+                  display: block;
+                  margin-bottom: 0.5rem;
+            }
+
+            &__column {
+                  display: block;
+                  position: relative;
+                  margin-bottom: 2px;
+                  padding-left: 120px;
+                  display: flex;
+                  justify-content: center;
+
+                  &::before {
+                        content: attr(data-heading);
+                        box-sizing: border-box;
+                        position: absolute;
+                        // position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 120px;
+                        height: 100%;
+                        // width: max-content;
+                        // width: max-content;
+                        // height: max-content;
+                        // min-width: 240px;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.6rem;
+                        background-color: lighten($main-blue, 30%);
+                        border: 2px solid $main-dark-blue;
+                        justify-content: center;
+                        border-radius: 3px;
+                        padding: 1rem;
+                  }
+            }
+      }
+}
+
+.table-container {
+      max-width: 80rem;
+      margin: 0 auto;
+}
+
+.table {
+      $this: &;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0.2rem;
+
+      &__heading-row {
+            background-color: lighten($main-blue, 30%);
+      }
+
+      &__heading-column {
+            box-sizing: border-box;
+            text-align: center;
+            border: 2px solid $main-dark-blue;
+            padding: 1rem 1rem;
+            border-radius: 5px;
+      }
+
+      &__row {
+            box-sizing: border-box;
+            &:hover {
+                  background-color: darken($main-grey, 10%);
+
+                  #{$this}__column {
+                        box-sizing: border-box;
+                        border: 1px solid $main-dark-blue;
+                  }
+            }
+      }
+
+      &__column {
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid $main-dark-blue;
+            border-radius: 5px;
+            padding: 1rem 1rem;
+            height: 4.7rem;
+      }
+
+      &--break-xs {
+            @media only screen and (max-width: $mediaXSDevices) {
+                  @include break;
+            }
+      }
+      &--break-m {
+            @media only screen and (max-width: $mediaMDevices) {
+                  @include break;
+            }
+      }
+
+      &--break-l {
+            @media only screen and (max-width: $mediaLDevices) {
+                  @include break;
+            }
+      }
+}

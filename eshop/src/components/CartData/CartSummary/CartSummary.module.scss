@@ -1,0 +1,27 @@
+.summary {
+      padding: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      position: relative;
+
+      &__sticky {
+            position: sticky;
+            top: 12rem;
+      }
+
+      &__item {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+      }
+
+      &__item-name {
+            font-weight: 500;
+
+            &--bold {
+                  font-weight: 600;
+                  font-size: 1.8rem;
+            }
+      }
+}

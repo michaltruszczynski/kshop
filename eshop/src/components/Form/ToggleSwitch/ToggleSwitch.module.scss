@@ -1,0 +1,58 @@
+@import "../../../abstracts/index";
+
+.toggle {
+      $this: &;
+      --width: 50px;
+      --height: calc(var(--width) / 2);
+      --border-radius: calc(var(--height) / 2);
+
+      display: inline-block;
+      cursor: pointer;
+
+      &__input {
+            display: none;
+
+            &:checked ~ #{$this}__fill {
+                  background-color: $buttonBackGrHoverGreen;
+            }
+
+            &:disabled ~ #{$this}__fill {
+                  background-color: #ccc;
+                  cursor: not-allowed;
+            }
+
+            &:disabled ~ #{$this}__fill:after {
+                  background: $buttonBackGrHoverRed;
+            }
+
+            &:checked ~ #{$this}__fill:after {
+                  transform: translateX(var(--height));
+            }
+
+            &:checked:disabled ~ #{$this}__fill:after {
+                  background: $buttonBackGrHoverGreen;
+            }
+      }
+
+      &__fill {
+            position: relative;
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--border-radius);
+            background-color: $buttonBackGrHoverRed;
+            transition: background-color 0.2s;
+
+            &:after {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: var(--height);
+                  width: var(--height);
+                  background: #ffffff;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+                  border-radius: var(--border-radius);
+                  transition: transform 0.2s;
+            }
+      }
+}

@@ -1,0 +1,20 @@
+@import "../../../../abstracts/index";
+
+.preview-container {
+      padding: 1rem;
+      border: 1px solid $inputBorderColor;
+      border-color: $inputBorderColor;
+      background-color: $inputBackground;
+      border-radius: 0.2rem;
+      display: grid;
+      justify-content: space-evenly;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 18rem));
+
+      &--error {
+            color: $inputErrorBorderColor;
+            box-shadow: 0 0 4px 0 $inputErrorBorderColor;
+            background-color: $inputErrorBackground;
+            border-color: $inputErrorBorderColor;
+      }
+}

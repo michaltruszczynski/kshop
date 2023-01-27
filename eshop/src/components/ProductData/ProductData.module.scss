@@ -1,0 +1,27 @@
+@import "../../abstracts/index";
+
+.section {
+      max-width: 1280px;
+      margin: 8rem auto;
+
+      &__container {
+            margin: 0 2rem;
+            padding: 2rem 0;
+      }
+}
+
+.product-container {
+      max-width: 99.2rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+}
+
+@media only screen and (max-width: $mediaMDevices) {
+      .product-container {
+            max-width: 60rem;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr max-content;
+      }
+}

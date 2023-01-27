@@ -1,0 +1,30 @@
+.button {
+      min-width: 4.7rem;
+
+      padding: 1rem 2rem;
+      margin: 1rem 0;
+      align-self: center;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: white;
+      border-radius: 0.5rem;
+
+      display: block;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      &--green {
+            background-color: #659c83;
+            border: 1px solid #659c83;
+      }
+
+      &--red {
+            background-color: #fa8171;
+            border: 1px solid #fa8171;
+      }
+
+      &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+      }
+}

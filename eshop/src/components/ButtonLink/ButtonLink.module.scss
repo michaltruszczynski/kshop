@@ -1,0 +1,28 @@
+@import "../../abstracts/index";
+
+.button-link {
+      display: block;
+      box-sizing: border-box;
+      width: max-content;
+      // max-width: 18rem;
+      min-width: 16rem;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: $main-white;
+      text-align: center;
+      border: 1px solid $main-dark-blue;
+
+      &__square {
+            background-color: $main-dark-blue;
+            border-radius: 0.5rem;
+      }
+
+      &__round {
+            background-color: $main-pink;
+            border-radius: 4rem;
+      }
+
+      &:hover {
+            border: 1px solid darken($main-dark-blue, 10%);
+      }
+}

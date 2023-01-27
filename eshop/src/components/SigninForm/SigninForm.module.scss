@@ -1,0 +1,14 @@
+.form {
+      max-width: 60rem;
+      margin: 0 auto;
+
+      &__buttons {
+            display: flex;
+            justify-content: flex-start;
+            grid-gap: 2rem;
+      }
+
+      &__info {
+            font-size: 1.4rem;
+      }
+}

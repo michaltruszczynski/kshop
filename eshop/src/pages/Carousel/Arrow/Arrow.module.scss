@@ -1,0 +1,19 @@
+.arrow {
+      position: absolute;
+      top: 50%;
+      height: 5rem;
+      width: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.1);
+      transition: transform ease-in 0.1s;
+      cursor: pointer;
+
+      &__
+
+      &:hover {
+            transform: scale(1.1);
+      }
+}

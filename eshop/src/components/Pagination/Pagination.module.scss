@@ -1,0 +1,32 @@
+@import '../../abstracts/index';
+
+.pagination-controls {
+      margin: 5rem auto 0;
+      max-width: 94rem;
+}
+
+.button-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+}
+
+.button-item {
+      margin: 0 0.5rem;
+}
+
+.page-counter {
+      box-sizing: border-box;
+      cursor: pointer;
+      min-width: 4.7rem;
+      padding: 1rem 2rem;
+      align-self: center;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: $buttonFontWhite;
+      border-radius: 0.5rem;
+      background-color: $buttonBackGrGreen;
+      border: 1px solid $buttonBorderGreen;
+      margin: 0rem 0.5rem;
+      line-height: 2rem;
+}

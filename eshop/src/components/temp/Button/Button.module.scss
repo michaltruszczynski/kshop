@@ -1,0 +1,53 @@
+.button {
+      min-width: 12rem;
+      max-width: 20rem;
+      padding: 0.8rem 4rem;
+
+
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #f1f2f3;
+      border-radius: 3rem;
+
+      outline: none;
+      box-sizing: border-box;
+      display: block;
+      cursor: pointer;
+
+      &:active {
+            background: blue;
+      }
+
+      &:disabled {
+            background: #c7cbcf;
+            border: 2px solid #c7cbcf;
+            color: #f1f2f3;
+      }
+
+      &--primary {
+            background: darkslateblue;
+            border: 2px solid darkslateblue;
+            &:hover,
+            &:active {
+                  border: 2px solid darkslateblue;
+            }
+      }
+
+      &--success {
+            background: darkslategrey;
+            border: 2px solid darkslategrey;
+            &:hover,
+            &:active {
+                  background: darkslategrey;
+            }
+      }
+
+      &--danger {
+            background: darkred;
+            border: 2px solid darkred;
+            &:hover,
+            &:active {
+                  background: darkred;
+            }
+      }
+}

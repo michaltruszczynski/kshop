@@ -1,0 +1,126 @@
+@import '../../abstracts/index';
+
+.product {
+      // max-height: 48rem;
+      min-width: 20rem;
+      max-width: 30rem;
+      // max-width: 50rem;
+      width: 100%;
+      background-color: $light-white;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+      border-radius: 1rem;
+      text-align: center;
+      transition: all 300ms ease-in-out;
+      overflow: hidden;
+
+      $this: &;
+
+      &:hover {
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+
+            #{$this}__header:after {
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  left: 0;
+                  top: 0;
+                  border-radius: 1rem 1rem 0 0;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  transition: all 500ms ease-in-out;
+                  z-index: 1;
+            }
+
+            .icons {
+                  opacity: 1;
+                  transform: translate(0, -50%) scale(1);
+            }
+      }
+
+      &__header {
+            position: relative;
+            max-height: 35rem;
+            // background-color: #f6f2f1;
+            background-color: $dark-white;
+            transition: all 300ms ease-in-out;
+            z-index: 0;
+            padding: 1rem;
+
+            .icons {
+                  position: absolute;
+                  right: 5%;
+                  top: 50%;
+                  transform: translate(0, -50%) scale(0);
+                  z-index: 2;
+                  opacity: 0;
+                  transition: all 500ms ease-in-out;
+
+                  .icon__container {
+                        background-color: $light-white;
+                        font-size: 2.5rem;
+                        display: block;
+                        border-radius: 50%;
+                        padding: 1.5rem 1.6rem;
+                        margin-bottom: 1rem;
+                        line-height: 2rem;
+                        cursor: pointer;
+                        transition: all 300ms ease-in-out;
+
+                        &:hover {
+                              background-color: $main-dark-blue;
+                              color: $light-white;
+                        }
+                  }
+            }
+      }
+
+      &__image {
+            max-width: 30rem;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            object-fit: cover;
+            object-position: center;
+            position: relative;
+      }
+
+      &__footer {
+            max-height: 100%;
+            padding: 2rem 1.6rem 1.6rem 1.6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .rating {
+                  color: $main-blue;
+            }
+
+            .product__link {
+                  text-decoration: none;
+            }
+
+            .product__name {
+                  font-size: 2.2rem;
+                  font-weight: 500;
+                  text-decoration: none;
+            }
+
+            .product__brand {
+                  font-size: 1.2rem;
+                  font-style: italic;
+                  font-weight: 500;
+                  text-decoration: none;
+            }
+      }
+
+      &__price {
+            color: $main-dark-blue;
+            font-size: 2rem;
+      }
+}
+
+.product-header .icons span i {
+      transition: all 500ms ease-in-out;
+}
+

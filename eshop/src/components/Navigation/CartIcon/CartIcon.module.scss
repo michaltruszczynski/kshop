@@ -1,0 +1,30 @@
+@import "../../../abstracts/index";
+
+.cart-icon {
+      color: inherit;
+      font-size: 3rem;
+      padding: 0.8rem 1rem;
+      transition: all 300ms ease-in-out;
+}
+
+.icon-container {
+      position: relative;
+      display: inline-block;
+}
+
+.item-number {
+      position: absolute;
+      right: -10px;
+      top: 0px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      background-color: $main-pink;
+      color: $main-white;
+      height: 2.3rem;
+      width: 2.3rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}

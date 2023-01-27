@@ -1,0 +1,15 @@
+.dot {
+      padding: 1rem;
+      margin-right: 0.5rem;
+      cursor: pointer;
+      border-radius: 50%;
+
+      &--inactive {
+            background: rgba(0, 0 ,0 , 0.03);
+            opacity: 8;
+      }
+
+      &--active {
+            background: rgba(0, 0 ,0 , 0.1);
+      }
+}

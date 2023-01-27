@@ -1,0 +1,19 @@
+.user-data-container {
+      max-width: 80rem;
+      margin: 0 auto;
+}
+
+.data {
+      padding: 1rem;
+
+      &__item {
+            font-size: 1.6rem;
+            letter-spacing: 0.15rem;
+            margin-bottom: 0.5rem;
+      }
+
+      &__description {
+            font-size: 1.5rem;
+            font-weight: 600;
+      }
+}

@@ -1,0 +1,49 @@
+.nav-path {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+}
+
+.product {
+      &__name {
+            font-size: 4rem;
+            line-height: 1.2;
+            font-weight: 500;
+            margin-bottom: 2rem;
+      }
+
+      &__type {
+            font-size: 2rem;
+            line-height: 1.2;
+            font-weight: 500;
+            margin-bottom: 2rem;
+      }
+
+      &__price {
+            font-weight: 600;
+            font-size: 2rem;
+            color: #ff7c9c;
+            margin-bottom: 2rem;
+      }
+
+      &__details {
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 500;
+      }
+
+      &__description {
+            text-align: left;
+            overflow-wrap: anywhere;
+      }
+}
+
+.order {
+      &__quantity {
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+      }
+}
+
+

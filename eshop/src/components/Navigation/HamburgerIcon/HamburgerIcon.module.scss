@@ -1,0 +1,26 @@
+@import "../../../abstracts/index";
+
+.hamburger-icon {
+      color: inherit;
+      display: none;
+      box-sizing: border-box;
+      border-width: 2px;
+      border-style: solid;
+      border-color: inherit;
+      border-radius: 3px;
+      box-shadow: 0px 0px 1px inherit;
+      font-size: 3rem;
+      padding: 0.2rem;
+      line-height: 3rem;
+      text-align: center;
+      cursor: pointer;
+      margin-right: 1.3rem;
+}
+
+@media only screen and (max-width: $mediaMDevices) {
+      .hamburger-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      }
+}

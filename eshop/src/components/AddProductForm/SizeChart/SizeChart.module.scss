@@ -1,0 +1,16 @@
+.controlls-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.instruction {
+      font-size: 1.3rem;
+}

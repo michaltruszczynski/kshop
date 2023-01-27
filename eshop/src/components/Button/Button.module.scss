@@ -1,0 +1,79 @@
+@import '../../abstracts/index';
+
+.button {
+      display: block;
+      box-sizing: border-box;
+      font-family: inherit;
+      cursor: pointer;
+
+      &--icon {
+            min-width: 4.7rem;
+
+            padding: 0.2rem;
+            margin-left: 1rem;
+            align-self: center;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: $buttonFontWhite;
+            border-radius: 0.5rem;
+      }
+
+      &--standard {
+            min-width: 4.7rem;
+            padding: 1rem 2rem;
+            margin: 1rem 0;
+            align-self: center;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: $buttonFontWhite;
+            border-radius: 0.5rem;
+      }
+
+      &--large {
+            min-width: 16rem;
+            max-width: max-content;
+            align-self: center;
+            padding: 1rem 2rem;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: $buttonFontWhite;
+            border-radius: 0.5rem;
+      }
+
+      &--green {
+            background-color: $buttonBackGrGreen;
+            border: 1px solid #659c83;
+            &:hover,
+            &:active {
+                  background-color: darken($buttonBackGrGreen , 10%);
+            }
+      }
+
+      &--red {
+            background-color: $buttonBackGrRed;
+            border: 1px solid $buttonBorderRed;
+            &:hover,
+            &:active {
+                  background-color: darken($buttonBackGrRed, 10%);
+            }
+      }
+
+      &--blue {
+            background: $main-dark-blue;
+            border: 1px solid $main-dark-blue;
+            &:hover,
+            &:active {
+                  border: 1px solid darken($main-dark-blue, 10%);
+            }
+      }
+
+      &--active {
+            color: $buttonActiveFont;
+            font-weight: 600;
+      }
+
+      &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+      }
+}

@@ -1,0 +1,147 @@
+@import "../../../abstracts/index";
+
+.field {
+      &__name {
+            display: block;
+            padding: 0.5rem 0;
+            font-weight: 400;
+      }
+
+      &__input {
+            $this: &;
+            width: 100%;
+            display: block;
+            resize: none;
+            padding: 0.7rem;
+            outline: none;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-radius: 0.4rem;
+            background-color: $inputBackground;
+            transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+            // appearance: none;
+            // margin: 0;
+
+            &:disabled {
+                  cursor: not-allowed;
+                  color: #6d6d6d;
+            }
+
+            &--error {
+                  box-shadow: 0 0 4px 0 #d50000;
+                  color: $inputErrorFontColor;
+                  background-color: $inputErrorBackground;
+                  border-color: $inputErrorBorderColor;
+                  &::placeholder {
+                        color: $inputErrorPlaceholderFontColor;
+                  }
+            }
+      }
+
+      &__number {
+            $this: &;
+            width: 100%;
+            display: block;
+            resize: none;
+            padding: 0.7rem;
+            outline: none;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-radius: 0.4rem;
+            background-color: $inputBackground;
+            transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+            // appearance: none;
+            // margin: 0;
+
+            &:disabled {
+                  cursor: not-allowed;
+                  color: #6d6d6d;
+            }
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+            }
+
+            &[type="number"] {
+                  -moz-appearance: textfield;
+            }
+
+            &--error {
+                  box-shadow: 0 0 4px 0 #d50000;
+                  color: $inputErrorFontColor;
+                  background-color: $inputErrorBackground;
+                  border-color: $inputErrorBorderColor;
+                  &::placeholder {
+                        color: $inputErrorPlaceholderFontColor;
+                  }
+            }
+      }
+
+      &__textarea {
+            width: 100%;
+            display: block;
+            resize: none;
+            padding: 0.7rem;
+            outline: none;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-radius: 0.4rem;
+            height: 10rem;
+            background-color: $inputBackground;
+
+            &:disabled {
+                  cursor: not-allowed;
+                  color: #6d6d6d;
+            }
+
+            &--error {
+                  box-shadow: 0 0 4px 0 #d50000;
+                  color: $inputErrorFontColor;
+                  background-color: $inputErrorBackground;
+                  border-color: $inputErrorBorderColor;
+                  &::placeholder {
+                        color: $inputErrorPlaceholderFontColor;
+                  }
+            }
+      }
+      &__select {
+            width: 100%;
+            display: block;
+            resize: none;
+            padding: 0.7rem;
+            outline: none;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-radius: 0.2rem;
+            color: $inputFontColor;
+            background-color: $inputBackground;
+
+            &:disabled {
+                  cursor: not-allowed;
+            }
+
+            &--error {
+                  box-shadow: 0 0 4px 0 #d50000;
+                  color: $inputErrorFontColor;
+                  background-color: $inputErrorBackground;
+                  border-color: $inputErrorBorderColor;
+                  &::placeholder {
+                        color: $inputErrorPlaceholderFontColor;
+                  }
+            }
+      }
+
+      &__radio {
+            display: inline-block;
+            resize: none;
+            padding: 0.7rem;
+            outline: none;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-radius: 0.2rem;
+            color: $inputFontColor;
+            margin-right: 0.5rem;
+      }
+}

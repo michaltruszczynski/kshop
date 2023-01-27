@@ -1,0 +1,138 @@
+@import "../../abstracts/index";
+
+@mixin break {
+      .table {
+            &__heading {
+                  display: none;
+            }
+
+            &__row {
+                  display: block;
+                  display: table-row;
+                  margin-bottom: 0.5rem;
+            }
+
+            &__column {
+                  display: block;
+                  position: relative;
+                  margin-bottom: 2px;
+                  padding: 0rem;
+                  display: flex;
+                  justify-content: space-between;
+
+                  &::before {
+                        content: attr(data-heading);
+                        box-sizing: border-box;
+                        min-width: 140px;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.6rem;
+                        background-color: lighten($main-blue, 30%);
+                        border: 2px solid $main-dark-blue;
+                        justify-content: center;
+                        border-radius: 3px;
+                  }
+
+                  &__item {
+                        flex-grow: 1;
+                        padding: 1rem;
+                        overflow-wrap: break-word;
+                  }
+            }
+      }
+}
+
+.table-container {
+      max-width: 90rem;
+      margin: 0 auto;
+}
+
+.table {
+      $this: &;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0.2rem;
+
+      &__heading-row {
+            background-color: lighten($main-blue, 30%);
+      }
+
+      &__heading-column {
+            box-sizing: border-box;
+            text-align: center;
+            border: 2px solid $main-dark-blue;
+            padding: 1rem 1rem;
+            border-radius: 5px;
+      }
+
+      &__heading-icons {
+            display: flex;
+            flex-wrap: wrap;
+      }
+
+      &__row {
+            display: table-row;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: $main-dark-blue;
+            &:hover {
+                  background-color: darken($main-grey, 10%);
+
+                  #{$this}__column {
+                        box-sizing: border-box;
+                        border: 1px solid $main-dark-blue;
+                  }
+            }
+      }
+
+      &__column {
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid $main-dark-blue;
+            border-radius: 5px;
+            padding: 1rem 1rem;
+
+            &__item {
+                  text-align: center;
+            }
+      }
+
+      &__link {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+      }
+
+      &--break-xs {
+            @media only screen and (max-width: $mediaXSDevices) {
+                  @include break;
+            }
+      }
+      &--break-m {
+            @media only screen and (max-width: $mediaMDevices) {
+                  @include break;
+            }
+      }
+
+      &--break-l {
+            @media only screen and (max-width: $mediaLDevices) {
+                  @include break;
+            }
+      }
+}
+
+.icon {
+      font-size: 1.9rem;
+      margin-left: 0.5rem;
+      text-align: center;
+      line-height: normal;
+      vertical-align: middle;
+
+      &--red {
+            color: $buttonBackGrHoverRed;
+      }
+
+      &--green {
+            color: $buttonBackGrHoverGreen;
+      }
+}

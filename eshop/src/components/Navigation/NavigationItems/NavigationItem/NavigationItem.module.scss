@@ -1,0 +1,83 @@
+@import "../../../../abstracts/index";
+
+.nav__item {
+    list-style: none;
+    position: relative;
+    transition: background-color 200ms ease-in-out;
+
+    &--open {
+        background-color: $main-dark-blue;
+        color: $main-white;
+    }
+}
+
+.nav__link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+
+    &:link {
+        padding: 0.8rem 1rem;
+        transition: all 300ms ease-in-out;
+        &:hover {
+            color: $main-white;
+        }
+    }
+
+    &:hover {
+        background-color: $main-dark-blue;
+        color: $main-white;
+    }
+}
+
+.button__link {
+    color: inherit;
+    display: block;
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $main-dark-blue;
+        color: $main-white;
+    }
+}
+
+
+
+@media only screen and (max-width: $mediaMDevices) {
+    .nav__item {
+        display: block;
+        flex-grow: 1;
+        color: $main-dark-blue;
+
+        &--open {
+            background-color: $main-dark-blue;
+            color: $main-white;
+        }
+    }
+
+    .nav__link:link {
+        display: block;
+        font-size: 1.7rem;
+        padding: 1rem 0;
+
+        &:hover {
+            background-color: $main-dark-blue;
+            color: $main-white;
+        }
+    }
+
+    .button__link {
+        display: block;
+        font-size: 1.7rem;
+        padding: 1rem 0;
+        color: inherit;
+
+        &:hover {
+            color: $main-white;
+        }
+    }
+}

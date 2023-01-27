@@ -1,0 +1,25 @@
+@import "../../../abstracts/index";
+
+.field {
+      display: block;
+      padding: 0.5rem 0;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+
+      &__checkbox {
+            display: inline-block;
+            resize: none;
+            padding: 0.7rem;
+            outline: none;
+            border: 1px solid #ccc;
+            font-family: "Popins", sans-serif;
+            border-radius: 0.2rem;
+            color: $inputFontColor;
+            margin-right: 0.5rem;
+      }
+
+      &__name {
+            margin-left: 0.5rem;
+      }
+}
