@@ -1,4 +1,4 @@
-const Brand = require("../model/Brand");
+const Brand = require("../model/brand");
 
 const { getUpdatedFilesArr } = require("../utility/utility");
 const { deleteFilesFromS3, copyFilesS3Promise } = require("../middleware/utility");
