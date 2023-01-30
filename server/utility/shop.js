@@ -4,7 +4,6 @@ const calculateCartTotalPriceAndDiscount = (cart, cartProductsDbData, discount =
             let totalItemPrice = 0;
             cartProductsDbData.forEach(product => {
                   if (itemId === (product._id).toString()) {
-                        console.log(parseFloat(product.price).toFixed(2))
                         totalItemPrice = quantity * parseFloat(product.price).toFixed(2);
                   }
             });

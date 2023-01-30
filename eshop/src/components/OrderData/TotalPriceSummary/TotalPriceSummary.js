@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './TotalPriceSummary.module.scss';
 
 const priceToDisplay = (price) => {
-      console.log(price)
+
       return new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'PLN' }).format(price)
 }
 

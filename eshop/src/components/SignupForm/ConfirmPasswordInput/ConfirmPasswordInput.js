@@ -13,7 +13,7 @@ const ConfirmPasswordInput = ({ confirmPasswordData, confirmPasswordChangeHandle
       const onConfirmPasswordChange = value => {
             confirmPasswordChangeHandler(prevState => {
                   const confirmPasswordIsValid = passwordMatchDirect(passwordValue, value);
-                  console.log('confirmPasswordIsValid', confirmPasswordIsValid)
+
                   let errorMessage = [];
                   if (!confirmPasswordIsValid) {
                         errorMessage = ['Passwords does not match.'];

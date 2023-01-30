@@ -4,8 +4,6 @@ class TokenService {
       }
 
       getAccessToken() {
-            // console.log(JSON.parse(localStorage.getItem('token')));
-            console.log(localStorage.getItem('token'))
             return JSON.parse(localStorage.getItem('token'));
       }
 
@@ -27,8 +25,7 @@ class LocalStorageService {
       setUserId(userId) {
             localStorage.set('userId'.userId)
       }
-
 }
 
 export const tokenService = new TokenService();
-export const localStorageService = new LocalStorageService()
+export const localStorageService = new LocalStorageService();

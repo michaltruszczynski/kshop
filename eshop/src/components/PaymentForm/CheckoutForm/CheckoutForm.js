@@ -48,7 +48,6 @@ const CheckoutForm = ({ totalCartPrice }) => {
                   })
 
                   if (response.error) {
-                        console.log(response.error);
                         if (response.error.type) {
                               return setLoadingStatus(asyncOperation.SUCCESS);
                         }
@@ -65,7 +64,6 @@ const CheckoutForm = ({ totalCartPrice }) => {
                   }
 
                   else if (response.paymentIntent.status === 'succeeded') {
-                        console.log(response.paymentIntent.status)
                         const paymentCompletedMessage = new Message('Payment completed.');
                         paymentCompletedMessage.addMessageDetails('Thank you.');
                         const { message, messageDetailsArray } = paymentCompletedMessage.getMessageData();
@@ -77,7 +75,6 @@ const CheckoutForm = ({ totalCartPrice }) => {
                   }
 
             } catch (error) {
-                  console.log(error);
                   const errorMsg = new ErrorMessage(error);
                   const { errorMessage, errorDetailsArray } = errorMsg.getErrorMessageData();
                   setLoadingStatus(asyncOperation.ERROR);

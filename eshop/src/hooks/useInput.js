@@ -4,7 +4,6 @@ import { validateInput } from '../utility/validators';
 
 const useInput = inputConfiguration => {
       const [inputData, setInputData] = useState(() => {
-            console.log(inputConfiguration)
             const [[inpuKeyName, input]] = Object.entries(inputConfiguration);
             return {
                   value: input.elementConfig.defaultValue,

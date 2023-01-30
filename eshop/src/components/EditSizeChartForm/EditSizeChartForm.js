@@ -106,7 +106,6 @@ const EditSizeChartForm = () => {
             } catch (error) {
                   const errorMsg = new ErrorMessage(error);
                   const errorFormFieldsName = error.getErrorFormFieldsName();
-                  console.log(errorFormFieldsName)
                   if (errorFormFieldsName.length) {
                         errorFormFieldsName.forEach(fieldName => {
                               if (fieldName === 'sizeChart') {

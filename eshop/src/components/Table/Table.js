@@ -41,7 +41,6 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
 
                   const getRowData = () => {
                         const rowEntries = Object.entries(row);
-                        // console.log('rowEntries: ', rowEntries)
                         return rowEntries.map((data, index) => ({
                               key: columnsHeading[index],
                               value: data[1]
@@ -51,7 +50,6 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
                   const rowData = getRowData(row, columnsHeading);
                   //render sigle row
                   const renderRow = () => {
-                        // console.log('rowData: ', rowData)
                         return (
                               rowData.map((data, columnIndex) => {
                                     if (data.key === '#') {
@@ -112,7 +110,6 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
                               })
                         )
                   }
-                  console.log(renderRow())
 
                   return (
                         <tr className={styles['table__row']} key={`row-${rowIndex}`}>
@@ -137,7 +134,6 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
       }
 
       const renderHeadingIcons = () => {
-            // console.log(options)
             let headingIcons = [];
             if (options.linkUrl) {
                   headingIcons.push(

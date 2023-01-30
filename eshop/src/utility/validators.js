@@ -1,5 +1,4 @@
 export const required = defineEmpty => value => {
-      // console.log('required', value);
       if (defineEmpty) {
             return value.trim() !== defineEmpty;
       }
@@ -7,23 +6,18 @@ export const required = defineEmpty => value => {
 }
 
 export const requiredNumber = value => {
-      // console.log(typeof value)
-      // console.log(value > 0, value)
       return value > 0;
 }
 
 export const length = (config = { min: 5, max: 10 }) => value => {
       if (!value.trim()) return false;
       let isValid = true;
-      // console.log(config, value)
       if (config.min) {
-            // console.log('inCheck', value.trim().length)
             isValid = isValid && value.trim().length >= config.min;
       }
       if (config.max) {
             isValid = isValid && value.trim().length <= config.max;
       }
-      // console.log('inCheck', isValid)
       return isValid;
 }
 
@@ -113,7 +107,6 @@ export const duplicated = (array, elementKey, allowDuplicate = false) => value =
       if (allowDuplicate) return true;
       return !array.some(element => element[elementKey] === value[elementKey])
 }
-// let validators = [{check: required, errorMessage: 'Input is required.'}]
 
 export const validateInput = (validators, value) => {
       if (!validators || !validators.length) return { isValid: true, errorMessages: [] };

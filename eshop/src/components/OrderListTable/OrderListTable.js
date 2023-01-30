@@ -5,7 +5,6 @@ import Table from '../Table/Table';
 
 const OrderListTable = () => {
       const orders = useSelector(state => state.auth.orders)
-      console.log(orders)
 
       const orderTableColumnsHeadings = ['#', 'Date', 'Products quantity', 'Product category', 'Total Price', 'Options'];
 
@@ -39,7 +38,6 @@ const OrderListTable = () => {
       }
 
       const emptyOrderTableMessage = 'No orders have been made yet.'
-      console.log(getOrderTableData())
 
       return (
             <>

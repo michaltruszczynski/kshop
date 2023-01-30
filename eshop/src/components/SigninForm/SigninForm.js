@@ -77,14 +77,12 @@ const SigninForm = () => {
             try {
                   setLoading(asyncOperation.LOADING);
                   const response = await authService.signinUser(userCredentials);
-                  console.log(response.data);
                   const { userId, token, userRole, userName, orders, userEmail } = response.data;
                   resetInputFields();
                   setLoading(asyncOperation.SUCCESS);
                   if (!redirectPath) showSuccessSigninMessage(userRole);
                   dispatch(authSigninSuccess(token, userId, userRole, userName, userEmail, orders));
             } catch (error) {
-                  console.log(error.response, error.request)
                   const errorMsg = new ErrorMessage(error);
                   const errorFormFieldsName = errorMsg.getErrorFormFieldsName();
                   if (errorFormFieldsName.length) {

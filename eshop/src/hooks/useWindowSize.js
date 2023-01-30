@@ -20,7 +20,6 @@ export const useWindowSize = () => {
       useLayoutEffect(() => {
 
             const handleResize = () => {
-                  console.log(window.innerHeight, window.innerWidth)
                   setWindowSize({
                         width: window.innerWidth,
                         height: window.innerHeight

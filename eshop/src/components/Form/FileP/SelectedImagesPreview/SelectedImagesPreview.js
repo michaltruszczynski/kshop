@@ -5,7 +5,6 @@ import styles from './SelectedImagesPreview.module.scss';
 const SelectedImagesPreview = ({imagesSelected, primaryImage, disabled, onDeleteImage, editable, imageData, onSelectPrimaryImage }) => {
 
       if (!imagesSelected.length) return null;
-      console.log(primaryImage)
 
       const removeFileHandler = (event, index) => {
             onDeleteImage(event, index);
@@ -20,7 +19,7 @@ const SelectedImagesPreview = ({imagesSelected, primaryImage, disabled, onDelete
 
             return iconClasses.join(' ');
       }
-      console.log(imagesSelected)
+
       return imagesSelected.map((image, index) => (
             <div className={styles['preview-container']} key={image.name}>
                   <div className={styles['image-container']}>

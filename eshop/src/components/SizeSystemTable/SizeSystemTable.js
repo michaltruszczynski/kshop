@@ -9,9 +9,6 @@ const SizeSystemTable = () => {
       const [state] = useFetch('/admin/sizesystems');
       const { status } = state;
 
-      // const {sizeSystems: list} = sizeSystemList
-      console.log(state);
-
       // tableData = [ {_id: 12345, colVal_1, colVal_2, colVal_3, ...}, {...}]
 
       const sizeSystemsTableColumnsHeadings = ['#', 'Name', 'Options'];

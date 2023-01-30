@@ -8,7 +8,6 @@ import useFetch from '../../hooks/useFetch';
 const BrandListTable = () => {
       const [state] = useFetch('/admin/brands');
 
-      console.log(state);
       const { status } = state;
 
       // tableData = [ {_id: 12345, colVal_1, colVal_2, colVal_3, ...}, {...}]

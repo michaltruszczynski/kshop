@@ -19,7 +19,6 @@ const DynamicForm = ({ sizeChart, changeSizeChart }) => {
       const handleAddField = () => {
             const values = [...value];
             values.push({ sizeDescription: '' })
-            console.log(values)
             changeSizeChart(values, true);
       }
 

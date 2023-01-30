@@ -9,7 +9,6 @@ const useElementSize = (elementRef) => {
       const updateSize = () => {
             const element = elementRef?.current;
             if (!element) return;
-            console.log('useElementSize - width:', elementRef?.current.getBoundingClientRect().width)
             setSize({
                   width: element.getBoundingClientRect().width,
                   height: element.getBoundingClientRect().height
@@ -17,7 +16,6 @@ const useElementSize = (elementRef) => {
       }
 
       useLayoutEffect(() => {
-            console.log('useEffect from useElementSize', elementRef)
             updateSize();
             window.addEventListener('resize', updateSize);
 

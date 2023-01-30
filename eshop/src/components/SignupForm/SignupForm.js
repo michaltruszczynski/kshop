@@ -62,10 +62,9 @@ const SignupForm = () => {
       }
 
       const signupErrorHandler = (error) => {
-            console.log(error.response, error.request)
             const errorMsg = new ErrorMessage(error);
             const errorFormFieldsName = errorMsg.getErrorFormFieldsName();
-            console.log(errorFormFieldsName)
+
             if (errorFormFieldsName.length) {
                   errorFormFieldsName.forEach(fieldName => {
                         if (fieldName === 'name') {
@@ -110,13 +109,11 @@ const SignupForm = () => {
                   password: passwordData.password.value,
                   confirmPassword: confirmPasswordData.value
             }
-            console.log(newUser);
 
             try {
                   setLoading(asyncOperation.LOADING);
                   setError(null);
                   const response = await authService.signupUser(newUser);
-                  console.log(response.data);
                   resetInputFields();
                   setLoading(asyncOperation.SUCCESS);
                   showSuccessSignupMessage();

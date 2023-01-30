@@ -18,7 +18,7 @@ const DataErrorList = ({ imageData, primaryImageData }) => {
       const renderPrimaryImageError = () => {
             if (!primaryImageData) return null;
             const { touched: primaryImageTouched, isValid: primaryImageIsValid, errors: primaryImageErrors } = primaryImageData;
-            console.log('error image',primaryImageTouched, primaryImageIsValid)
+
             return (!primaryImageIsValid && primaryImageTouched) ? (
                   <InputError
                         touched={primaryImageTouched}

@@ -44,7 +44,6 @@ const EditBrandForm = () => {
       const [error, setError] = useState(null);
       const { id } = useParams();
       const history = useHistory();
-      console.log(inputImageData)
 
       useEffect(() => {
             if (!id) return setAsyncCallStatus(asyncOperation.SUCCESS);
@@ -54,18 +53,8 @@ const EditBrandForm = () => {
                   setAsyncCallStatus(asyncOperation.LOADING);
                   try {
                         const response = await adminService.getBrand(id);
-                        console.log(response)
                         const { _id, brandName, images } = response.data;
                         inputBrandNameDataChangeHandler('brandName')(brandName);
-
-                        // if (images) {
-                        //       const brandImages = images.map(image => ({
-                        //             url: image.imageUrl,
-                        //             name: image.originalFileName,
-                        //             fileName: image.fileName
-                        //       }))
-                        //       inputImageDataChangeHandler('images')(brandImages);
-                        // }
                         inputImageDataChangeHandler('images')(images);
                         setBrandId(_id);
                         setAsyncCallStatus(asyncOperation.SUCCESS);
@@ -89,24 +78,11 @@ const EditBrandForm = () => {
                   });
             }
 
-            // const appendInputsDataImages = inputsDataImages => {
-            //       console.log(inputsDataImages)
-            //       Object.entries(inputsDataImages).forEach(data => {
-            //             data[1].value.forEach(image => {
-            //                   console.log(data[0], image.file);
-            //                   newData.append(data[0], image.file);
-            //             })
-            //       });
-            // }
-
-
             const appendInputsDataImages = inputsDataImages => {
                   Object.entries(inputsDataImages).forEach(data => {
                         if (data[0] === 'images') {
                               data[1].value.forEach(image => {
-                                    console.log(data[0], image.file);
                                     if (!image.file) {
-                                          // newData.append('fileName', image.fileName);
                                           newData.append('urlImages', JSON.stringify(image));
                                     }
                                     newData.append(data[0], image.file);

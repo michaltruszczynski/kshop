@@ -22,12 +22,6 @@ const InputField = ({ label,
             onInputChange(value);
       }
 
-      // useEffect(() => {
-      //       if (elementType === 'select' && elementConfig.placeholder) {
-      //             changeInput("empty")
-      //       }
-      // }, []);
-
       const inputFieldClasses = htmlElementType => {
             let classesArray = [styles[`field__${htmlElementType}`]];
             if (!isValid && touched) {
@@ -39,7 +33,6 @@ const InputField = ({ label,
       let inputElement = null;
       switch (elementType) {
             case ('inputText'):
-                  // console.log(disabled, editable);
                   inputElement = (
                         <input
                               value={value}
@@ -94,7 +87,6 @@ const InputField = ({ label,
                               name={elementConfig.name}
                               id={elementConfig.id}
                               onChange={inputChangeHandler}
-                              // className={styles['field__select']}
                               className={inputFieldClasses('select')}
                               disabled={editable ? disabled : true}
                         >

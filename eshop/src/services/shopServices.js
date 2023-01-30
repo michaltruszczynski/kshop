@@ -1,11 +1,9 @@
-import axios from 'axios';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+import { axiosInstance } from './api';
 
 export const getShopProduct = (id) => {
-      return axios.get(`${API_URL}/shop/products/${id}`);
+      return axiosInstance.get(`/shop/products/${id}`);
 }
 
 export const getShopProducts = () => {
-      return axios.get(`${API_URL}/shop/products`);
+      return axiosInstance.get(`/shop/products`);
 }

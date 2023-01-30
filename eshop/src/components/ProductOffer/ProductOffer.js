@@ -22,17 +22,14 @@ const ProductOffer = ({
       const [state] = useFetch(productUrl);
       const { status } = state;
       const productsPerPage = 6;
-      console.log('rendering ProductOffer', state);
-      console.log(currentPage)
 
       useEffect(() => {
             setCurrentPage(1);
-            console.log('pagechange')
       }, [productsCategory, productsBrand, productsSort, productsCategoryIsValid, productsBrandIsValid, productsSortIsValid]);
 
       useEffect(() => {
             const searchProductUrlAPI = new URLSearchParams();
-            console.log('testing')
+
             if (productsCategoryIsValid) {
                   searchProductUrlAPI.append('productsCategory', productsCategory);
             }

@@ -22,7 +22,6 @@ const SelectInput = ({ label, elementConfig, value, options = [], onInputChange,
 
       const inputChangeHandler = event => {
             const { value } = event.target;
-            console.log('select')
             onInputChange(value);
       }
 

@@ -31,7 +31,6 @@ const DefinedSizeChartMenu = ({ sizeChart, changeSizeChart}) => {
             errors: []
       });
 
-      //do sprawdzenia
       useEffect(() => {
             let definedCharts = predefinedSizeChart.map(sizeChart => {
                   return {
@@ -40,7 +39,6 @@ const DefinedSizeChartMenu = ({ sizeChart, changeSizeChart}) => {
                   }
             });
             predefinedInput.elementConfig.options = definedCharts;
-            console.log(predefinedInput)
       }, []);
 
       const handleDefinedSizeChartChange = (id) => {

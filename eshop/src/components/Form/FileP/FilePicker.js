@@ -87,7 +87,7 @@ const FilePicker = ({
             const newFilesList = [...filesSelected];
             newFilesList.splice(index, 1);
             imageDataOnChangeHandler(newFilesList);
-            console.log(newFilesList)
+
             if (primaryImageData) {
                   const isFileIncluded = newFilesList.find(file => file.name === primaryImageData.value)
                   if (!isFileIncluded) {
@@ -108,16 +108,11 @@ const FilePicker = ({
 
       const selectPrimaryImageHandler = (event) => {
             const primaryFileName = event.target.value;
-            console.log(primaryFileName, filesSelected);
+
             if (primaryImageData) {
                   primaryImageDataOnChangeHandler(primaryFileName);
             }
       }
-
-      // const getInputName = (minFileNumber, maxFileNumber) => {
-      //       if (minFileNumber === maxFileNumber) return `(select ${minFileNumber} image)`;
-      //       return `(select ${minFileNumber} - ${maxFileNumber} images)`
-      // }
 
       return (
             <div className={styles['field']}>

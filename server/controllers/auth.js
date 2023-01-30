@@ -9,7 +9,6 @@ const { TokenExpiredError, JsonWebTokenError } = jwt;
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
-console.log('ACCESS_TOKEN_SECRET:', ACCESS_TOKEN_SECRET, process.env.ACCESS_TOKEN_SECRET)
 
 const secondsToMiliSeconds = seconds => seconds * 1000;
 const minutesTOMiliseconds = minutes => minutes * 60 * 1000;

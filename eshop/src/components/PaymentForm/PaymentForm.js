@@ -49,7 +49,6 @@ const Payment = () => {
                         setPaymentData(paymentData.data);
                         setLoadingStatus(asyncOperation.SUCCESS);
                   } catch (error) {
-                        console.log(error);
                         const errorMsg = new ErrorMessage(error);
                         setError(errorMsg);
                         setLoadingStatus(asyncOperation.ERROR);
@@ -83,9 +82,7 @@ const Payment = () => {
             }
       };
 
-      const { clientSecret, orderSubTotal, priceDiscount, shippingCost, orderTotal } = paymentData
-
-      console.log(clientSecret, orderSubTotal, priceDiscount, shippingCost, orderTotal)
+      const { clientSecret, orderSubTotal, priceDiscount, shippingCost, orderTotal } = paymentData;
 
       const options = {
             clientSecret,

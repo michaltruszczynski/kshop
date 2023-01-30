@@ -8,7 +8,7 @@ import { logout } from '../store/actions'
 
 const { dispatch } = store;
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =  process.env.NODE_ENV === "development" ? 'http://localhost:5000/api' : process.env.REACT_APP_API_URL;
 
 export const axiosInstance = axios.create({
       baseURL: API_URL
@@ -30,23 +30,20 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
       (response) => {
-            console.log(response)
             return response;
 
       }, async (error) => {
             const originalError = error;
             const originalConfig = error.config;
-            console.log('testing', error, error.response, error.request)
+
             if (originalConfig.url !== '/admin/signin' && error.response) {
-                  console.log('testing2')
+
                   if (error.response.status === 401 && originalConfig.url === '/admin/newtoken') {
-                        console.log('Check 1')
                         dispatch(logout())
                         return Promise.reject(originalError);
                   }
 
                   if (error.response.status === 401 && !originalConfig.retry) {
-                        console.log('Check 2')
                         originalConfig.retry = true;
                         try {
                               const response = await authService.newToken();

@@ -17,7 +17,6 @@ const Checkbox = ({ elementConfig, editable, disabled, value, onInputChange }) =
             }
       }
 
-      console.log(disabled)
       const checkboxInputs =
             elementConfig.options.map(checkbox => {
                   return (

@@ -12,21 +12,17 @@ export class ErrorMessage {
                   this.errorObject = error.response;
                   this.errorMessage = error.response.data?.message ? error.response.data.message : '';
                   this.errorDetailsArray = error.response.data?.data ? error.response.data.data : [];
-                  // console.log('error.response', error.response);
             } else if (error.request) {
                   this.errorObject = error.request;
                   this.errorMessage = 'Connection problems.'
                   this.errorDetailsArray = [];
                   this.addErrorDetails('Please try again later');
-                  // console.log('error.request', error.request);
             } else {
                   this.errorMessage = error.message ? error.message : 'Connection problems.';
                   this.errorDetailsArray = [];
                   if (!error.message) {
                         this.addErrorDetails('Please try again later');
                   }
-                  // console.dir(error.message)
-                  // console.log('error', this.errorObject)
             }
       }
 
@@ -95,5 +91,3 @@ export class Message {
             return { message, messageDetailsArray, messageDetails };
       }
 }
-
-

@@ -32,9 +32,6 @@ const App = () => {
     dispatch(authCheck())
   }, []);
 
-
-  console.log('[App.js] asyncOpStatus', asyncOperation, error)
-
   return (
     <AsyncOpBgComponent status={asyncOperation} error={null}>
       <Layout>

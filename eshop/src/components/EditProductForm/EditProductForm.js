@@ -66,9 +66,6 @@ const EditProductForm = () => {
 
       const { isConfirmed } = useConfirmationDialog()
 
-      // console.log('[EditProductForm, product: ]', product)
-      // console.log('[EditProductForm, product: ]', isAvailableDataChangeHandler)
-
       useEffect(() => {
             if (!id) {
                   return setAsyncCallStatus(asyncOperation.SUCCESS);
@@ -81,7 +78,7 @@ const EditProductForm = () => {
                         const response = await adminService.getProduct(id);
                         setProduct(response.data);
                         const { _id, name, type, category, brand, description, sizeChart, sizeSystemId, price, images, primaryImage, inOffer } = response.data;
-                        console.log(response.data)
+
                         inputsDescriptionDataChangeHandler('name')(name);
                         inputsDescriptionDataChangeHandler('type')(type);
                         inputsDescriptionDataChangeHandler('category')(category);
@@ -135,9 +132,7 @@ const EditProductForm = () => {
                   Object.entries(inputsDataImages).forEach(data => {
                         if (data[0] === 'images') {
                               data[1].value.forEach(image => {
-                                    console.log(data[0], image.file);
                                     if (!image.file) {
-                                          // newData.append('fileName', image.fileName);
                                           newData.append('urlImages', JSON.stringify(image));
                                     }
                                     newData.append(data[0], image.file);
@@ -171,7 +166,6 @@ const EditProductForm = () => {
                   dispatch(setMessage(message, messageDetailsArray));
                   backToProductList();
             } catch (error) {
-                  console.log('[EditProductForm - error]', error.response, error.request)
                   const errorMsg = new ErrorMessage(error);
                   setError(errorMsg);
                   setAsyncCallStatus(asyncOperation.ERROR);
@@ -180,18 +174,16 @@ const EditProductForm = () => {
 
       const updateHandler = async (event) => {
             event.preventDefault();
-            //TODO nie form data powtarz sie refactoryzować
+
             const newData = new FormData();
             const appendInputsData = inputsData => {
                   Object.entries(inputsData).forEach(data => {
-                        // console.log('[EditProductForm]', data[0], data[1].value)
                         newData.append(data[0], data[1].value)
                   });
             }
 
             const appendInputsDataJSON = inputsDataJSON => {
                   Object.entries(inputsDataJSON).forEach(data => {
-                        // console.log(data[0], JSON.stringify(data[1].value))
                         newData.append(data[0], JSON.stringify(data[1].value))
                   });
             }
@@ -200,9 +192,7 @@ const EditProductForm = () => {
                   Object.entries(inputsDataImages).forEach(data => {
                         if (data[0] === 'images') {
                               data[1].value.forEach(image => {
-                                    console.log(data[0], image.file);
                                     if (!image.file) {
-                                          // newData.append('fileName', image.fileName);
                                           newData.append('urlImages', JSON.stringify(image));
                                     }
                                     newData.append(data[0], image.file);
@@ -227,11 +217,9 @@ const EditProductForm = () => {
             setAsyncCallStatus(asyncOperation.LOADING);
             try {
                   const response = await adminService.putProduct(productId, newData);
-                  console.log(response)
                   setAsyncCallStatus(asyncOperation.SUCCESS);
                   backToProductList();
             } catch (error) {
-                  console.log('[EditProductForm - error]', error)
                   const errorMsg = new ErrorMessage(error);
                   setError(errorMsg);
                   setAsyncCallStatus(asyncOperation.ERROR);
@@ -249,9 +237,8 @@ const EditProductForm = () => {
       }
 
       const removeProductHandler = async () => {
-
            const operationIsConfirmed = await isConfirmed('Product will be removed. Please confirm.');
-           console.log(operationIsConfirmed)
+
            if (!operationIsConfirmed) return ;
             setAsyncCallStatus(asyncOperation.LOADING);
             try {

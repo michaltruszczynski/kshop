@@ -11,9 +11,6 @@ const ErrorRedirectPage = () => {
       const location = useLocation();
       const { state: { redirectFrom, errorMessage } } = location;
 
-      console.log(location);
-      console.log(redirectFrom);
-
       let redirectButton = null;
       if (redirectFrom) {
             redirectButton = (

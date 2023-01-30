@@ -14,7 +14,6 @@ const capitalize = word => {
 const UserListTable = () => {
       const [state] = useFetch('/admin/users');
       const { status, error } = state;
-      console.log(status)
 
       // tableData = [ {_id: 12345, colVal_1, colVal_2, colVal_3, ...}, {...}]
 
@@ -26,8 +25,6 @@ const UserListTable = () => {
                   isEditable: true
             }
       }
-
-      console.log('[UserListTable], rendering', state)
 
       const getUserTableData = () => {
             if (!state?.data?.users) return [];

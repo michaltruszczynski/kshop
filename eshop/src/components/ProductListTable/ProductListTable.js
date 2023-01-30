@@ -9,9 +9,6 @@ const ProductListTable = () => {
       const [state] = useFetch('/admin/allproducts');
       const { status, error } = state;
 
-      // const {sizeSystems: list} = sizeSystemList
-      // console.log(state);
-
       // tableData = [ {_id: 12345, colVal_1, colVal_2, colVal_3, ...}, {...}]
 
       const productsTableColumnsHeadings = ['#', 'Name', 'Type', 'Brand', 'Category', 'Options'];
@@ -24,9 +21,6 @@ const ProductListTable = () => {
                   inOffer: true
             }
       }
-
-
-      console.log('[ProductListTable], rendering', state)
 
       const getProductsTableData = () => {
             if (!state.data?.products) return [];
