@@ -180,7 +180,7 @@ exports.putProduct = async (req, res, next) => {
 
       const response = await product.save();
 
-      res.status(200).json({ message: "Brand updated.", productId: response._id });
+      res.status(200).json({ message: "Product updated.", productId: response._id });
    } catch (error) {
       if (!error.statusCode) {
          error.statusCode = 500;

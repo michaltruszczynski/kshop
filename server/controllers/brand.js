@@ -76,15 +76,15 @@ exports.getBands = async (req, res, next) => {
       const { user } = req;
       const brands = await Brand.find({}, "_id brandName owner");
 
-      const brandsList = brands.map(brand => {
-            const {_id, brandName, owner} = brand;
+      const brandsList = brands.map((brand) => {
+         const { _id, brandName, owner } = brand;
 
-            return {
-                  _id,
-                  brandName,
-                  isOwner: owner ? owner.toString() === user._id.toString() : 1
-            };
-      })
+         return {
+            _id,
+            brandName,
+            isOwner: owner ? owner.toString() === user._id.toString() : 1,
+         };
+      });
 
       res.status(200).json({ brands: brandsList });
    } catch (error) {
@@ -98,6 +98,7 @@ exports.getBands = async (req, res, next) => {
 exports.getBrand = async (req, res, next) => {
    const brandId = req.params.id;
    const { user } = req;
+
    try {
       const brand = await Brand.findById(brandId);
       console.log(brand);
@@ -123,6 +124,7 @@ exports.putBrand = async (req, res, next) => {
    const brandId = req.params.id;
    const { brandName, urlImages: urlImagesJSON } = req.body;
    const brandImages = req.files;
+   const { user } = req;
 
    try {
       const brand = await Brand.findById(brandId);
@@ -130,6 +132,12 @@ exports.putBrand = async (req, res, next) => {
       if (!brand) {
          const error = new Error("Could not find brand.");
          error.statusCode = 404;
+         throw error;
+      }
+
+      if (user._id.toString() !== brand.owner.toString()) {
+         const error = new Error("You are not authorized to perform this operation.");
+         error.statusCode = 403;
          throw error;
       }
 
@@ -155,25 +163,21 @@ exports.putBrand = async (req, res, next) => {
 };
 
 exports.getRandomBrands = async (req, res, next) => {
-      const {count} = req.query
-      try {
-                  const dbBrandCount = await Brand.find().countDocuments();
+   const { count } = req.query;
+   try {
+      const dbBrandCount = await Brand.find().countDocuments();
 
-                  if (dbBrandCount <= count) {
-                     return res.json({ brands: [] });
-                  }
-
-                  const randomBrands = await Brand.aggregate([
-                     { $sample: { size: parseInt(count) } },
-                     { $project: { _id: 1, brandName: 1, images: 1 } },
-                  ]);
-
-                  res.status(200).json({ brands: randomBrands });
-      } catch (error) {
-            if (!error.statusCode) {
-                  error.statusCode = 500;
-            }
-            next(error);
+      if (dbBrandCount <= count) {
+         return res.json({ brands: [] });
       }
-}
 
+      const randomBrands = await Brand.aggregate([{ $sample: { size: parseInt(count) } }, { $project: { _id: 1, brandName: 1, images: 1 } }]);
+
+      res.status(200).json({ brands: randomBrands });
+   } catch (error) {
+      if (!error.statusCode) {
+         error.statusCode = 500;
+      }
+      next(error);
+   }
+};

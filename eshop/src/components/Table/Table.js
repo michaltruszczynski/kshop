@@ -22,7 +22,7 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
                   return (
                         <th
                               className={styles['table__heading-column']}
-                              key={`column-${index}`}
+                              key={`column-${columnHeading}`}
                         >
                               {columnHeading}
                         </th>
@@ -64,25 +64,25 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
                                     }
 
                                     if (data.key === 'Options') {
-                                          let informationIcons = [<i className={['bx bx-file-find', styles['icon'], styles['icon--green']].join(' ')} ></i >]
+                                          let informationIcons = [<i key="bx-file-find" className={['bx bx-file-find', styles['icon'], styles['icon--green']].join(' ')} ></i >]
 
                                           if (data.value.isOwner && data.value.hasOwnProperty('isOwner')) {
-                                                informationIcons.push(<i className={['bx bxs-edit', styles['icon'], styles['icon--green']].join(' ')}></i>)
+                                                informationIcons.push(<i key="bxs-edit-green" className={['bx bxs-edit', styles['icon'], styles['icon--green']].join(' ')}></i>)
                                           }
                                           if (!data.value.isOwner && data.value.hasOwnProperty('isOwner')) {
-                                                informationIcons.push(<i className={['bx bxs-edit', styles['icon'], styles['icon--red']].join(' ')}></i>)
+                                                informationIcons.push(<i key="bxs-edit-red" className={['bx bxs-edit', styles['icon'], styles['icon--red']].join(' ')}></i>)
                                           }
                                           if (data.value.inOffer && data.value.hasOwnProperty('inOffer')) {
-                                                informationIcons.push(<i className={['bx bxs-circle', styles['icon'], styles['icon--green']].join(' ')}></i>)
+                                                informationIcons.push(<i key="bxs-circle-green" className={['bx bxs-circle', styles['icon'], styles['icon--green']].join(' ')}></i>)
                                           }
                                           if (!data.value.inOffer && data.value.hasOwnProperty('inOffer')) {
-                                                informationIcons.push(<i className={['bx bxs-circle', styles['icon'], styles['icon--red']].join(' ')}></i>)
+                                                informationIcons.push(<i key="bxs-circle-red" className={['bx bxs-circle', styles['icon'], styles['icon--red']].join(' ')}></i>)
                                           }
                                           if (data.value.inStock && data.value.hasOwnProperty('inStock')) {
-                                                informationIcons.push(<i className={['bx bxs-box', styles['icon'], styles['icon--green']].join(' ')}></i>)
+                                                informationIcons.push(<i key="bxs-box-green" className={['bx bxs-box', styles['icon'], styles['icon--green']].join(' ')}></i>)
                                           }
                                           if (!data.value.inStock && data.value.hasOwnProperty('inStock')) {
-                                                informationIcons.push(<i className={['bx bxs-box', styles['icon'], styles['icon--red']].join(' ')}></i>)
+                                                informationIcons.push(<i key="bxs-box-red" className={['bx bxs-box', styles['icon'], styles['icon--red']].join(' ')}></i>)
                                           }
 
                                           return (
@@ -137,28 +137,28 @@ const Table = ({ tableData, columnsHeading, breakOn = 'medium', options, emptyTa
             let headingIcons = [];
             if (options.linkUrl) {
                   headingIcons.push(
-                        <span>
+                        <span key="view">
                               <i className={['bx bx-file-find', styles['icon'], styles['icon--green']].join(' ')} ></i > View
                         </span>
                   )
             }
             if (options.icons?.isEditable) {
                   headingIcons.push(
-                        <span>
+                        <span key="edit">
                               <i className={['bx bxs-edit', styles['icon'], styles['icon--green']].join(' ')}></i> Edit
                         </span>
                   )
             }
             if (options.icons?.inOffer) {
                   headingIcons.push(
-                        <span>
+                        <span key="inOffer">
                               <i className={['bx bxs-circle', styles['icon'], styles['icon--green']].join(' ')}></i> Available in store
                         </span>
                   )
             }
             if (options.icons?.inStock) {
                   headingIcons.push(
-                        <span>
+                        <span key="inStock">
                               <i className={['bx bxs-box', styles['icon'], styles['icon--green']].join(' ')}></i> In stock
                         </span>
                   )

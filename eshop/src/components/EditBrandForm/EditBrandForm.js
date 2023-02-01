@@ -117,36 +117,8 @@ const EditBrandForm = () => {
 
             const newData = new FormData();
 
-            // const getFormData = (inputsData = {}, inputsDataImages = {}) => {
-            //       const newData = new FormData();
-            //       console.log(inputsData);
-            //       if (!((typeof inputsData === 'object') && (typeof inputsDataImages === 'object'))) return newData;
-
-            //       Object.entries(inputsData).forEach(data => {
-            //             console.log('check', data[0], data[1].value)
-            //             newData.append(data[0], data[1].value);
-            //       });
-
-            //       Object.entries(inputsDataImages).forEach(data => {
-            //             data[1].value.forEach(image => {
-            //                   console.log(data[0], image.file);
-            //                   if (!image.file) {
-            //                         // newData.append('fileName', image.fileName);
-            //                         newData.append('fileName', JSON.stringify(image));
-            //                   }
-            //                   newData.append(data[0], image.file);
-            //             })
-            //       });
-
-            //       return newData;
-            // }
-
-
-            // const newData = getFormData(inputBrandNameData, inputImageData);
-
             const appendInputsData = inputsData => {
                   Object.entries(inputsData).forEach(data => {
-                        // console.log('[EditProductForm]', data[0], data[1].value)
                         newData.append(data[0], data[1].value)
                   });
             }
@@ -155,9 +127,7 @@ const EditBrandForm = () => {
                   Object.entries(inputsDataImages).forEach(data => {
                         if (data[0] === 'images') {
                               data[1].value.forEach(image => {
-                                    console.log(data[0], image.file);
                                     if (!image.file) {
-                                          // newData.append('fileName', image.fileName);
                                           newData.append('urlImages', JSON.stringify(image));
                                     }
                                     newData.append(data[0], image.file);
@@ -180,10 +150,13 @@ const EditBrandForm = () => {
                   setAsyncCallStatus(asyncOperation.SUCCESS);
 
             } catch (error) {
+                  console.log(error)
                   console.log(error.response);
                   const errorMsg = new ErrorMessage(error);
+                  console.log(errorMsg)
                   setError(errorMsg);
                   setAsyncCallStatus(asyncOperation.ERROR);
+                  disableEditModeHandler();
             }
       }
 
@@ -193,12 +166,16 @@ const EditBrandForm = () => {
             setEditing(prevState => !prevState)
       }
 
+      const disableEditModeHandler = () => {
+            setEditing(false)
+      }
+
       const backToSizeSystemList = () => {
             history.push('/admin/brands');
       }
 
       return (
-            <AsyncOpBgComponent status={asyncCallStatus}>
+            <AsyncOpBgComponent status={asyncCallStatus} error={error} showErrorMessage={true}>
                   <form className={styles['form']}>
                         <BrandNameInput
                               inputBrandNameData={inputBrandNameData}
@@ -256,6 +233,17 @@ const EditBrandForm = () => {
                                           </Button>
                                     </>
                               )}
+                              {/* <ControlButtons
+                              editing={editing}
+                              isOwner={product?.isOwner}
+                              isFormValid={isFormDataValid}
+                              elementId={productId}
+                              submitHandler={submitHandler}
+                              removeHandler={removeProductHandler}
+                              updateHandler={updateHandler}
+                              backToPreviousPageHandler={backToProductList}
+                              changeEditModeHandler={changeEditModeHandler}
+                        /> */}
                         </div>
                   </form>
             </AsyncOpBgComponent>

@@ -30,66 +30,66 @@ const ErrorInformation = ({ error, children, showErrorMessage = false }) => {
       const { status: errorStatusCode } = error.getErrorObject();
 
       // 401 Unauthorized
-      if (errorStatusCode === 401) {
-            if (pathname === '/signin') return children;
-            const errorMessage = 'You are not authenticated to enter requested resources.'
-            return <Redirect
-                  to={{
-                        pathname: "/servererror",
-                        state: {
-                              redirectFrom: pathname,
-                              errorMessage: errorMessage,
-                              errorCode: errorStatusCode
-                        }
-                  }}
-            />
-      }
+      // if (errorStatusCode === 401) {
+      //       if (pathname === '/signin') return children;
+      //       const errorMessage = 'You are not authenticated to enter requested resources.'
+      //       return <Redirect
+      //             to={{
+      //                   pathname: "/servererror",
+      //                   state: {
+      //                         redirectFrom: pathname,
+      //                         errorMessage: errorMessage,
+      //                         errorCode: errorStatusCode
+      //                   }
+      //             }}
+      //       />
+      // }
 
       // 403 Forbidden
-      if (errorStatusCode === 403) {
-            if (pathname === '/signin') return children;
-            const errorMessage = 'You are not authorized to enter requested resources.'
-            return <Redirect
-                  to={{
-                        pathname: "/servererror",
-                        state: {
-                              redirectFrom: pathname,
-                              errorMessage: errorMessage,
-                              errorCode: errorStatusCode
-                        }
-                  }}
-            />
-      }
+      // if (errorStatusCode === 403) {
+      //       if (pathname === '/signin') return children;
+      //       const errorMessage = 'You are not authorized to enter requested resources.'
+      //       return <Redirect
+      //             to={{
+      //                   pathname: "/servererror",
+      //                   state: {
+      //                         redirectFrom: pathname,
+      //                         errorMessage: errorMessage,
+      //                         errorCode: errorStatusCode
+      //                   }
+      //             }}
+      //       />
+      // }
 
       //400 Bad request
 
-      if (errorStatusCode === 400) {
-            const errorMessage = 'Bad request. Incorrect data provided.'
-            return <Redirect
-                  to={{
-                        pathname: "/servererror",
-                        state: {
-                              redirectFrom: pathname,
-                              errorMessage: errorMessage,
-                              errorCode: errorStatusCode
-                        }
-                  }}
-            />
-      }
+      // if (errorStatusCode === 400) {
+      //       const errorMessage = 'Bad request. Incorrect data provided.'
+      //       return <Redirect
+      //             to={{
+      //                   pathname: "/servererror",
+      //                   state: {
+      //                         redirectFrom: pathname,
+      //                         errorMessage: errorMessage,
+      //                         errorCode: errorStatusCode
+      //                   }
+      //             }}
+      //       />
+      // }
 
-      if (errorStatusCode >= 500 || !errorStatusCode) {
-            const errorMessage = 'Error occured while processing your request. Please try again later.';
-            return <Redirect
-                  to={{
-                        pathname: "/servererror",
-                        state: {
-                              redirectFrom: pathname,
-                              errorMessage: errorMessage,
-                              errorCode: errorStatusCode
-                        }
-                  }}
-            />
-      }
+      // if (errorStatusCode >= 500 || !errorStatusCode) {
+      //       const errorMessage = 'Error occured while processing your request. Please try again later.';
+      //       return <Redirect
+      //             to={{
+      //                   pathname: "/servererror",
+      //                   state: {
+      //                         redirectFrom: pathname,
+      //                         errorMessage: errorMessage,
+      //                         errorCode: errorStatusCode
+      //                   }
+      //             }}
+      //       />
+      // }
 
       return children;
 }
