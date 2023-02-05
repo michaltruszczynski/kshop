@@ -5,7 +5,7 @@ const brandController = require("../controllers/brand");
 
 const { deleteFilesOnDataErrorS3 } = require("../middleware/utility");
 
-const { brandDataValidation } = require("../middleware/brandValidators/brandValidators");
+const { brandDataValidation, editBrandValidation } = require("../middleware/brandValidators/brandValidators");
 const { brandImageMulterValidationS3 } = require("../middleware/brandValidators/brandMulterS3");
 
 const { dataErrorHandler, multerErrorHandler, throwError } = require("../middleware/errorHandlers/errorHandlers.js");
@@ -43,6 +43,8 @@ router.get("/brands", verifyToken, verifyUserRole(["admin", "employee"]), brandC
 
 router.get("/brands/random", brandController.getRandomBrands);
 
-router.get("/brands/:id", verifyToken, verifyUserRole(["admin", "employee"]), brandController.getBrand);
+router.get("/brands/:id", verifyToken, verifyUserRole(["admin", "employee"]), editBrandValidation(), dataErrorHandler, throwError("Brand data validation failed."), brandController.getBrand);
+
+router.get("/removebrand/:id", verifyToken, brandController.removeBrand);
 
 module.exports = router;

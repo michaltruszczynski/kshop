@@ -32,6 +32,9 @@ const brandSchema = new Schema(
          ref: "User",
          required: true,
       },
+      removeDate: {
+            type: Date
+      },
    },
    { timestamps: true }
 );

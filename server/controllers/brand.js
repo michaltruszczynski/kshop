@@ -1,15 +1,14 @@
-const Brand = require("../model/brand");
+const Brand = require('../model/brand');
 
-const { getUpdatedFilesArr } = require("../utility/utility");
-const { deleteFilesFromS3, copyFilesS3Promise } = require("../middleware/utility");
+const { getUpdatedFilesArr } = require('../utility/utility');
+const { deleteFilesFromS3, copyFilesS3Promise } = require('../middleware/utility');
 
 const getParsedFileName = (fileNameJSON) => {
    if (!fileNameJSON) return [];
    if (!Array.isArray(fileNameJSON)) {
-      console.log("JSON.parse(fileNameJSON): ", JSON.parse(fileNameJSON));
+      console.log('JSON.parse(fileNameJSON): ', JSON.parse(fileNameJSON));
       return [JSON.parse(fileNameJSON)];
    }
-   // console.log('second: ', fileNameJSON.map(singlefilenameJSON => JSON.parse(singlefilenameJSON)));
    return fileNameJSON.map((singlefilenameJSON) => JSON.parse(singlefilenameJSON));
 };
 
@@ -53,7 +52,6 @@ exports.postBrand = async (req, res, next) => {
 
    const images = [...formatNewS3Images(brandImages), ...formatDuplicatedS3Images(copiedImages)];
 
-   // console.log('brandImages:', images);
    const newBrand = new Brand({
       brandName,
       images,
@@ -62,7 +60,7 @@ exports.postBrand = async (req, res, next) => {
 
    try {
       const result = await newBrand.save();
-      res.status(200).json({ message: "Brand created.", brandId: result._id });
+      res.status(200).json({ message: 'Brand created.', brandId: result._id });
    } catch (error) {
       if (!error.statusCode) {
          error.statusCode = 500;
@@ -74,7 +72,7 @@ exports.postBrand = async (req, res, next) => {
 exports.getBands = async (req, res, next) => {
    try {
       const { user } = req;
-      const brands = await Brand.find({}, "_id brandName owner");
+      const brands = await Brand.find({ removeDate: { $exists: false } }, '_id brandName owner');
 
       const brandsList = brands.map((brand) => {
          const { _id, brandName, owner } = brand;
@@ -101,9 +99,9 @@ exports.getBrand = async (req, res, next) => {
 
    try {
       const brand = await Brand.findById(brandId);
-      console.log(brand);
+
       if (!brand) {
-         const error = new Error("Could not find brand.");
+         const error = new Error('Could not find brand.');
          error.statusCode = 404;
          throw error;
       }
@@ -130,13 +128,13 @@ exports.putBrand = async (req, res, next) => {
       const brand = await Brand.findById(brandId);
 
       if (!brand) {
-         const error = new Error("Could not find brand.");
+         const error = new Error('Could not find brand.');
          error.statusCode = 404;
          throw error;
       }
 
       if (user._id.toString() !== brand.owner.toString()) {
-         const error = new Error("You are not authorized to perform this operation.");
+         const error = new Error('You are not authorized to perform this operation.');
          error.statusCode = 403;
          throw error;
       }
@@ -152,7 +150,7 @@ exports.putBrand = async (req, res, next) => {
 
       const result = await brand.save();
       console.log(result);
-      res.status(200).json({ message: "Brand updated.", brandId: result._id });
+      res.status(200).json({ message: 'Brand updated.', brandId: result._id });
    } catch (error) {
       console.log(error);
       if (!error.statusCode) {
@@ -165,7 +163,7 @@ exports.putBrand = async (req, res, next) => {
 exports.getRandomBrands = async (req, res, next) => {
    const { count } = req.query;
    try {
-      const dbBrandCount = await Brand.find().countDocuments();
+      const dbBrandCount = await Brand.find({ removeDate: { $exists: false } }).countDocuments();
 
       if (dbBrandCount <= count) {
          return res.json({ brands: [] });
@@ -175,6 +173,46 @@ exports.getRandomBrands = async (req, res, next) => {
 
       res.status(200).json({ brands: randomBrands });
    } catch (error) {
+      if (!error.statusCode) {
+         error.statusCode = 500;
+      }
+      next(error);
+   }
+};
+
+exports.removeBrand = async (req, res, next) => {
+   let brandId = req.params.id;
+   const { user } = req;
+
+   try {
+      const response = await Brand.updateOne(
+         {
+            _id: brandId,
+            owner: user._id,
+            removeDate: {
+               $exists: false,
+            },
+         },
+         {
+            $set: {
+               removeDate: new Date().toISOString(),
+            },
+         }
+      );
+
+      console.log(response);
+
+      const { modifiedCount } = response;
+
+      if (!modifiedCount) {
+         const error = new Error('Could not find brand.');
+         error.statusCode = 404;
+         throw error;
+      }
+
+      res.status(200).json({ message: 'Brand removed.', brandId: brandId });
+   } catch (error) {
+      console.log(error);
       if (!error.statusCode) {
          error.statusCode = 500;
       }

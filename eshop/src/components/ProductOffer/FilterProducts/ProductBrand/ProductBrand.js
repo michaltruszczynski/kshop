@@ -7,7 +7,7 @@ import useFetch from '../../../../hooks/useFetch';
 import { productBrandInputConfig } from './productBrandInputConfig'
 
 const ProductBrand = ({ inputBrandData, inputBrandChangeHandler, disabled }) => {
-      const [fetchState] = useFetch('/admin/brands');
+      const [fetchState] = useFetch('/shop/brands');
 
       const { status } = fetchState;
 

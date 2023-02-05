@@ -1,4 +1,4 @@
-const { body } = require('express-validator');
+const { body, param } = require('express-validator');
 
 const brandDataValidation = () => {
       return [
@@ -49,8 +49,17 @@ const brandDataValidation = () => {
       ]
 }
 
+const editBrandValidation = () => {
+      return [
+            param('id')
+            .isMongoId()
+            .withMessage('Invalid brandId.')
+      ]
+}
+
 module.exports = {
-      brandDataValidation
+      brandDataValidation,
+      editBrandValidation
 }
 
             // body('fileName')

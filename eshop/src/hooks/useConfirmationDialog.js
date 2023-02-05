@@ -1,8 +1,6 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { clearMessage, requestConfirmation } from '../store/actions';
+import { requestConfirmation } from '../store/actions';
 
 const useConfirmationDialog = () => {
         const dispatch = useDispatch();

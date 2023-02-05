@@ -1,15 +1,15 @@
-const Product = require("../model/product");
+const Product = require('../model/product');
 
-const { getUpdatedFilesArr } = require("../utility/utility");
-const { deleteFilesFromS3, copyFilesS3Promise } = require("../middleware/utility");
+const { getUpdatedFilesArr } = require('../utility/utility');
+const { deleteFilesFromS3, copyFilesS3Promise } = require('../middleware/utility');
 
 const getParsedFileName = (fileNameJSON) => {
    if (!fileNameJSON) return [];
    if (!Array.isArray(fileNameJSON)) {
-      console.log("JSON.parse(fileNameJSON): ", JSON.parse(fileNameJSON));
+      console.log('JSON.parse(fileNameJSON): ', JSON.parse(fileNameJSON));
       return [JSON.parse(fileNameJSON)];
    }
-   // console.log('second: ', fileNameJSON.map(singlefilenameJSON => JSON.parse(singlefilenameJSON)));
+
    return fileNameJSON.map((singlefilenameJSON) => JSON.parse(singlefilenameJSON));
 };
 
@@ -20,7 +20,7 @@ exports.getProduct = async (req, res, next) => {
       const product = await Product.findById(productId);
 
       if (!product) {
-         const error = new Error("Could not find product.");
+         const error = new Error('Could not find product.');
          error.statusCode = 404;
          throw error;
       }
@@ -41,11 +41,10 @@ exports.getProduct = async (req, res, next) => {
 exports.getAllProducts = async (req, res, next) => {
    try {
       const { user } = req;
-      const products = await Product.find({ removeDate: { $exists: false } }, "name type category brand price owner inStock inOffer");
+      const products = await Product.find({ removeDate: { $exists: false } }, 'name type category brand price owner inStock inOffer');
 
       const productsList = products.map((product) => {
          const { _id, name, type, category, brand, price, owner, inStock, inOffer } = product;
-         // console.log(product);
          return {
             _id,
             name,
@@ -131,7 +130,7 @@ exports.postProduct = async (req, res, next) => {
       });
 
       const response = await newProduct.save();
-      res.status(200).json({ message: "Product created.", productId: response._id });
+      res.status(200).json({ message: 'Product created.', productId: response._id });
    } catch (error) {
       if (!error.statusCode) {
          error.statusCode = 500;
@@ -146,11 +145,11 @@ exports.putProduct = async (req, res, next) => {
       const { category, name, type, brand, description, sizeSystem, sizeSystemId, sizeChart: sizeChartJSON, urlImages: urlImagesJSON, price, primaryImage, inOffer } = req.body;
 
       const productImages = req.files;
-      console.log("sizeSystemId: ", sizeSystemId);
+      console.log('sizeSystemId: ', sizeSystemId);
       const product = await Product.findById(productId);
 
       if (!product) {
-         const error = new Error("Could not find product.");
+         const error = new Error('Could not find product.');
          error.statusCode = 404;
          throw error;
       }
@@ -180,7 +179,7 @@ exports.putProduct = async (req, res, next) => {
 
       const response = await product.save();
 
-      res.status(200).json({ message: "Product updated.", productId: response._id });
+      res.status(200).json({ message: 'Product updated.', productId: response._id });
    } catch (error) {
       if (!error.statusCode) {
          error.statusCode = 500;
@@ -206,7 +205,6 @@ exports.deleteProduct = async (req, res, next) => {
 exports.removeProduct = async (req, res, next) => {
    let productId = req.params.id;
    const { user } = req;
-   // console.log('removeProduct: ', user, productId)
 
    try {
       const response = await Product.updateOne(
@@ -226,12 +224,12 @@ exports.removeProduct = async (req, res, next) => {
       const { modifiedCount } = response;
 
       if (!modifiedCount) {
-         const error = new Error("Could not find product.");
+         const error = new Error('Could not find product.');
          error.statusCode = 404;
          throw error;
       }
 
-      res.status(200).json({ message: "Product removed.", productId: productId });
+      res.status(200).json({ message: 'Product removed.', productId: productId });
    } catch (error) {
       console.log(error);
       if (!error.statusCode) {
@@ -243,7 +241,6 @@ exports.removeProduct = async (req, res, next) => {
 
 exports.getProducts = async (req, res, next) => {
    try {
-      // console.log(req.query)
       const { productsCategory, productsBrand, productsSort } = req.query;
       const page = parseInt(req.query.page) || 1;
       const pageLimit = parseInt(req.query.pageLimit) || 4;
@@ -264,7 +261,7 @@ exports.getProducts = async (req, res, next) => {
 
       const skipProductCount = (page - 1) * pageLimit;
 
-      const products = await Product.find({ ...searchParams }, "name type category brand price images primaryImage")
+      const products = await Product.find({ removeDate: { $exists: false }, ...searchParams }, 'name type category brand price images primaryImage')
          .skip(skipProductCount)
          .limit(+pageLimit)
          .sort(sortProductsParam);
@@ -306,7 +303,7 @@ exports.getRadomProducts = async (req, res, next) => {
 
       const randomProducts = await Product.aggregate([
          { $sample: { size: parseInt(count) } },
-         { $project: { _id: 1, name: 1, type: 1, category: 1, brand: 1, images: 1, primaryImage: 1, price: { $convert: { input: "$price", to: "double" } } } },
+         { $project: { _id: 1, name: 1, type: 1, category: 1, brand: 1, images: 1, primaryImage: 1, price: { $convert: { input: '$price', to: 'double' } } } },
       ]);
 
       res.status(200).json({ products: randomProducts });

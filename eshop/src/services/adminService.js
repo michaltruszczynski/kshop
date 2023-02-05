@@ -45,6 +45,14 @@ const putBrand = (id, data) => {
       return axiosInstance.put(`/admin/brand/${id}`, data);
 }
 
+const removeBrand = (id) => {
+      return axiosInstance.get(`/admin/removebrand/${id}`)
+}
+
+const deleteBrand = (id) => {
+      return axiosInstance.delete(`/admin/deletebrand/${id}`)
+}
+
 export const adminService = {
       getUser,
       putUser,
@@ -56,6 +64,7 @@ export const adminService = {
       removeProduct,
       getBrand,
       postBrand,
-      putBrand
-
+      putBrand,
+      removeBrand,
+      deleteBrand
 }

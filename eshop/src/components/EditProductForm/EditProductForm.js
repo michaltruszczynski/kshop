@@ -64,7 +64,7 @@ const EditProductForm = () => {
       const history = useHistory();
       const dispatch = useDispatch();
 
-      const { isConfirmed } = useConfirmationDialog()
+      const { isConfirmed } = useConfirmationDialog();
 
       useEffect(() => {
             if (!id) {

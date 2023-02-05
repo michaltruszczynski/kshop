@@ -25,14 +25,14 @@ const ControlButtons = ({
                                     onClick={submitHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    disabled={isFormValid} type="submit">
+                                    disabled={isFormValid} type="button">
                                     Save
                               </Button>
                               <Button
                                     onClick={backToPreviousPageHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Back to list
                               </Button>
                         </>
@@ -44,21 +44,21 @@ const ControlButtons = ({
                                     onClick={updateHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    disabled={isFormValid} type="submit">
+                                    disabled={isFormValid} type="button">
                                     Update
                               </Button>
                               <Button
                                     onClick={submitHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    disabled={isFormValid} type="submit">
+                                    disabled={isFormValid} type="button">
                                     Save as new
                               </Button>
                               <Button
                                     onClick={changeEditModeHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Cancel
                               </Button>
                         </>
@@ -69,14 +69,14 @@ const ControlButtons = ({
                                     onClick={submitHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    disabled={isFormValid} type="submit">
+                                    disabled={isFormValid} type="button">
                                     Save as new
                               </Button>
                               <Button
                                     onClick={changeEditModeHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Cancel
                               </Button>
                         </>
@@ -87,7 +87,7 @@ const ControlButtons = ({
                                     onClick={changeEditModeHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Edit
                               </Button>
                               <Button
@@ -102,7 +102,7 @@ const ControlButtons = ({
                                     onClick={backToPreviousPageHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Back to list
                               </Button>
                         </>
@@ -113,14 +113,14 @@ const ControlButtons = ({
                                     onClick={changeEditModeHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Edit
                               </Button>
                               <Button
                                     onClick={backToPreviousPageHandler}
                                     buttonType="success"
                                     buttonStyle="standard"
-                                    type="submit">
+                                    type="button">
                                     Back to list
                               </Button>
                         </>

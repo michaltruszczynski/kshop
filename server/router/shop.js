@@ -9,4 +9,7 @@ router.get('/products',
 router.get('/products/:id',
       shopController.getProduct);
 
+router.get('/brands',
+      shopController.getBrands);
+
 module.exports = router;
