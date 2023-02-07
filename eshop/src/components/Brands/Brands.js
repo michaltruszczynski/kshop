@@ -8,9 +8,8 @@ import Slider from "../Carousel/Slider";
 const Brands = () => {
    const productsSearchParams = new URLSearchParams();
    productsSearchParams.append("count", 4);
-   console.log(productsSearchParams.toString());
 
-   const searchProductsUrl = `/admin/brands/random`;
+   const searchProductsUrl = `/shop/brands/random`;
 
    const [state] = useFetch(`${searchProductsUrl}?${productsSearchParams.toString()}`);
 
@@ -22,7 +21,6 @@ const Brands = () => {
       return state.data.brands.map(brand => brand.images[0].url)
    }
 
-   console.log(status);
    return (
       <section className={styles["section"]}>
          <div className={styles["section__container"]}>

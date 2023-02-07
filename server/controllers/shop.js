@@ -54,6 +54,30 @@ exports.getProducts = async (req, res, next) => {
    }
 };
 
+
+exports.getRadomProducts = async (req, res, next) => {
+   const { count } = req.query;
+   try {
+      const dbProductCount = await Product.find().countDocuments();
+
+      if (dbProductCount <= count) {
+         return res.json({ products: [] });
+      }
+
+      const randomProducts = await Product.aggregate([
+         { $sample: { size: parseInt(count) } },
+         { $project: { _id: 1, name: 1, type: 1, category: 1, brand: 1, images: 1, primaryImage: 1, price: { $convert: { input: '$price', to: 'double' } } } },
+      ]);
+
+      res.status(200).json({ products: randomProducts });
+   } catch (error) {
+      if (!error.stausCode) {
+         error.statusCode = 500;
+      }
+      next(error);
+   }
+};
+
 exports.getProduct = async (req, res, next) => {
    const productId = req.params.id;
 
@@ -98,6 +122,26 @@ exports.getBrands = async (req, res, next) => {
       res.status(200).json({ brands: brandsList });
    } catch (error) {
       if (!error.stausCode) {
+         error.statusCode = 500;
+      }
+      next(error);
+   }
+};
+
+exports.getRandomBrands = async (req, res, next) => {
+   const { count } = req.query;
+   try {
+      const dbBrandCount = await Brand.find({ removeDate: { $exists: false } }).countDocuments();
+
+      if (dbBrandCount <= count) {
+         return res.json({ brands: [] });
+      }
+
+      const randomBrands = await Brand.aggregate([{ $sample: { size: parseInt(count) } }, { $project: { _id: 1, brandName: 1, images: 1 } }]);
+
+      res.status(200).json({ brands: randomBrands });
+   } catch (error) {
+      if (!error.statusCode) {
          error.statusCode = 500;
       }
       next(error);

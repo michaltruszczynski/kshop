@@ -66,7 +66,8 @@ const EditBrandForm = () => {
             setBrand(response.data);
             setAsyncCallStatus(asyncOperation.SUCCESS);
          } catch (error) {
-            console.log(error.response);
+            const errorMsg = new ErrorMessage(error);
+         setError(errorMsg);
             setAsyncCallStatus(asyncOperation.ERROR);
          }
       };

@@ -61,7 +61,7 @@ const ProductOffer = ({
       return (
             <>
                   <AsyncOpBgComponent status={status}>
-                        {(!state.data?.products || !state.data?.products.length) && (
+                        {(!state?.data?.products || !state?.data?.products.length) && (
                               <BackgroundContent>
                                     <h1>No products available.</h1>
                               </BackgroundContent>

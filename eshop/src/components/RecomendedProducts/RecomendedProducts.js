@@ -10,7 +10,7 @@ const RecomendedProducts = () => {
    productsSearchParams.append("count", 4);
    console.log(productsSearchParams.toString());
 
-   const searchProductsUrl = `/admin/products/random`;
+   const searchProductsUrl = `/shop/products/random`;
 
    const [state] = useFetch(`${searchProductsUrl}?${productsSearchParams.toString()}`);
 

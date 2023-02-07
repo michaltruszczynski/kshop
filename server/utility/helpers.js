@@ -25,7 +25,17 @@ const randomId = array[randomIndex]
    return randomIdArr;
 };
 
+const isDev = () => {
+   try {
+       return process?.env.NODE_ENV === "development";
+   } catch {
+       return false;
+   }
+};
+
+
 module.exports = {
    generateRandNumsArray,
    generateRandomIdArr,
+   isDev
 };

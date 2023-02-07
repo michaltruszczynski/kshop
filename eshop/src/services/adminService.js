@@ -30,7 +30,7 @@ const deleteProduct = (id) => {
 }
 
 const removeProduct = (id) => {
-      return axiosInstance.get(`/admin/products/remove/${id}`);
+      return axiosInstance.get(`/admin/removeproduct/${id}`);
 }
 
 const getBrand = (id) => {
@@ -49,10 +49,6 @@ const removeBrand = (id) => {
       return axiosInstance.get(`/admin/removebrand/${id}`)
 }
 
-const deleteBrand = (id) => {
-      return axiosInstance.delete(`/admin/deletebrand/${id}`)
-}
-
 export const adminService = {
       getUser,
       putUser,
@@ -65,6 +61,5 @@ export const adminService = {
       getBrand,
       postBrand,
       putBrand,
-      removeBrand,
-      deleteBrand
+      removeBrand
 }

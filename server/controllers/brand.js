@@ -149,29 +149,8 @@ exports.putBrand = async (req, res, next) => {
       brand.images = updatedFilesList;
 
       const result = await brand.save();
-      console.log(result);
+
       res.status(200).json({ message: 'Brand updated.', brandId: result._id });
-   } catch (error) {
-      console.log(error);
-      if (!error.statusCode) {
-         error.statusCode = 500;
-      }
-      next(error);
-   }
-};
-
-exports.getRandomBrands = async (req, res, next) => {
-   const { count } = req.query;
-   try {
-      const dbBrandCount = await Brand.find({ removeDate: { $exists: false } }).countDocuments();
-
-      if (dbBrandCount <= count) {
-         return res.json({ brands: [] });
-      }
-
-      const randomBrands = await Brand.aggregate([{ $sample: { size: parseInt(count) } }, { $project: { _id: 1, brandName: 1, images: 1 } }]);
-
-      res.status(200).json({ brands: randomBrands });
    } catch (error) {
       if (!error.statusCode) {
          error.statusCode = 500;
@@ -200,8 +179,6 @@ exports.removeBrand = async (req, res, next) => {
          }
       );
 
-      console.log(response);
-
       const { modifiedCount } = response;
 
       if (!modifiedCount) {
@@ -212,7 +189,6 @@ exports.removeBrand = async (req, res, next) => {
 
       res.status(200).json({ message: 'Brand removed.', brandId: brandId });
    } catch (error) {
-      console.log(error);
       if (!error.statusCode) {
          error.statusCode = 500;
       }

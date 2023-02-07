@@ -41,8 +41,6 @@ router.put(
 
 router.get('/brands', verifyToken, verifyUserRole(['admin', 'employee']), brandController.getBands);
 
-router.get('/brands/random', brandController.getRandomBrands);
-
 router.get(
    '/brands/:id',
    verifyToken,

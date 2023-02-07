@@ -239,78 +239,56 @@ exports.removeProduct = async (req, res, next) => {
    }
 };
 
-exports.getProducts = async (req, res, next) => {
-   try {
-      const { productsCategory, productsBrand, productsSort } = req.query;
-      const page = parseInt(req.query.page) || 1;
-      const pageLimit = parseInt(req.query.pageLimit) || 4;
 
-      const searchParams = {};
-      if (productsCategory) {
-         searchParams.productCategory = productsCategory;
-      }
-      if (productsBrand) {
-         searchParams.productBrand = productsBrand;
-      }
-      let sortProductsParam;
-      if (productsSort) {
-         sortProductsParam = { createdAt: productsSort };
-      }
+// exports.getProducts = async (req, res, next) => {
+//    try {
+//       const { productsCategory, productsBrand, productsSort } = req.query;
+//       const page = parseInt(req.query.page) || 1;
+//       const pageLimit = parseInt(req.query.pageLimit) || 4;
 
-      const productsCount = await Product.find({ ...searchParams }).countDocuments();
+//       const searchParams = {};
+//       if (productsCategory) {
+//          searchParams.productCategory = productsCategory;
+//       }
+//       if (productsBrand) {
+//          searchParams.productBrand = productsBrand;
+//       }
+//       let sortProductsParam;
+//       if (productsSort) {
+//          sortProductsParam = { createdAt: productsSort };
+//       }
 
-      const skipProductCount = (page - 1) * pageLimit;
+//       const productsCount = await Product.find({ ...searchParams }).countDocuments();
 
-      const products = await Product.find({ removeDate: { $exists: false }, ...searchParams }, 'name type category brand price images primaryImage')
-         .skip(skipProductCount)
-         .limit(+pageLimit)
-         .sort(sortProductsParam);
+//       const skipProductCount = (page - 1) * pageLimit;
 
-      const productsList = products.map((product) => {
-         const { _id, name, type, category, brand, images, price, primaryImage } = product;
+//       const products = await Product.find({ removeDate: { $exists: false }, ...searchParams }, 'name type category brand price images primaryImage')
+//          .skip(skipProductCount)
+//          .limit(+pageLimit)
+//          .sort(sortProductsParam);
 
-         return {
-            _id,
-            name,
-            type,
-            category,
-            brand,
-            images,
-            primaryImage,
-            price: parseInt(price).toFixed(2),
-         };
-      });
-      res.status(200).json({
-         products: productsList,
-         productsCount: productsCount,
-      });
-   } catch (error) {
-      if (!error.stausCode) {
-         error.statusCode = 500;
-      }
-      next(error);
-   }
-};
+//       const productsList = products.map((product) => {
+//          const { _id, name, type, category, brand, images, price, primaryImage } = product;
 
-exports.getRadomProducts = async (req, res, next) => {
-   const { count } = req.query;
-   try {
-      const dbProductCount = await Product.find().countDocuments();
-
-      if (dbProductCount <= count) {
-         return res.json({ products: [] });
-      }
-
-      const randomProducts = await Product.aggregate([
-         { $sample: { size: parseInt(count) } },
-         { $project: { _id: 1, name: 1, type: 1, category: 1, brand: 1, images: 1, primaryImage: 1, price: { $convert: { input: '$price', to: 'double' } } } },
-      ]);
-
-      res.status(200).json({ products: randomProducts });
-   } catch (error) {
-      if (!error.stausCode) {
-         error.statusCode = 500;
-      }
-      next(error);
-   }
-};
+//          return {
+//             _id,
+//             name,
+//             type,
+//             category,
+//             brand,
+//             images,
+//             primaryImage,
+//             price: parseInt(price).toFixed(2),
+//          };
+//       });
+//       res.status(200).json({
+//          products: productsList,
+//          productsCount: productsCount,
+//       });
+//    } catch (error) {
+//       if (!error.stausCode) {
+//          error.statusCode = 500;
+//       }
+//       next(error);
+//    }
+// };
