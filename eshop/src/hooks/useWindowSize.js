@@ -20,7 +20,6 @@ export const useWindowSize = () => {
       useLayoutEffect(() => {
 
             const handleResize = () => {
-                  
                   setWindowSize({
                         width: window.innerWidth,
                         height: window.innerHeight
@@ -32,7 +31,7 @@ export const useWindowSize = () => {
             window.addEventListener('resize', debouncedHandleResize);
 
             return () => {
-                  window.removeEventListener('resize', handleResize);
+                  window.removeEventListener('resize', debouncedHandleResize);
             }
       }, []);
 

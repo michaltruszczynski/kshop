@@ -8,7 +8,6 @@ const brandDataValidation = () => {
                   .withMessage('Brand name must be at least 5 - 35 characters long.'),
                   body('urlImages')
                   .custom((urlImages, { req }) => {
-                        console.log('urlImages: ', urlImages)
                         try {
                               if (!urlImages) return true;
                               if (Array.isArray(urlImages)) {
@@ -28,7 +27,7 @@ const brandDataValidation = () => {
                         const minFilesNumber = 0;
                         let filesNumber = 0;
                         let urlImagesNumber = 0;
-                        // console.log('req.files', req.files)
+
                         if (req.files) {
                               filesNumber = req.files.length;
                         }
@@ -42,14 +41,13 @@ const brandDataValidation = () => {
                                     urlImagesNumber = 1;
                               }
                         }
-                        console.log(filesNumber, urlImagesNumber)
+
                         return (((filesNumber + urlImagesNumber) <= maxFilesNumber) && ((filesNumber + urlImagesNumber) >= minFilesNumber))
                   }).withMessage('Brand image number incorrect, required 0 - 1 images.')
-
       ]
 }
 
-const editBrandValidation = () => {
+const brandIdValidation = () => {
       return [
             param('id')
             .isMongoId()
@@ -59,26 +57,5 @@ const editBrandValidation = () => {
 
 module.exports = {
       brandDataValidation,
-      editBrandValidation
+      brandIdValidation
 }
-
-            // body('fileName')
-            //       .custom((fileName, { req }) => {
-            //             const maxFilesNumber = 1;
-            //             const minFilesNumber = 0;
-            //             let filesNumber = 0;
-            //             let fileNameNumber = 0;
-            //             console.log('req.files', req.files)
-            //             if (req.files) {
-            //                   filesNumber = req.files.length;
-            //             }
-
-            //             if (fileName) {
-            //                   if (Array.isArray(fileName)) {
-            //                         fileNameNumber = fileName.length;
-            //                   } else {
-            //                         fileNameNumber = 1;
-            //                   }
-            //             }
-            //             return (((filesNumber + fileNameNumber) <= maxFilesNumber) && ((filesNumber + fileNameNumber) >= minFilesNumber))
-            //       }).withMessage('Brand image allowed number exceeded, max. 1 image.')

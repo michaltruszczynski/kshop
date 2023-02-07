@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import BrandNameInput from './BrandNameInput/BrandNameInput';
 import FilePicker from '../Form/FileP/FilePicker';
 import AsyncOpBgComponent from '../AsyncOpBgComponent/AsyncOpBgComponent';
-import Button from '../Button/Button';
 import ControlButtons from './ControlButtons/ControlButtons';
 
 import useForm from '../../hooks/useForm';
@@ -48,6 +48,7 @@ const EditBrandForm = () => {
    const [error, setError] = useState(null);
    const { id } = useParams();
    const history = useHistory();
+   const dispatch = useDispatch();
    const { isConfirmed } = useConfirmationDialog();
 
    useEffect(() => {
@@ -106,12 +107,15 @@ const EditBrandForm = () => {
       setAsyncCallStatus(asyncOperation.LOADING);
       try {
          const response = await adminService.postBrand(newData);
-         console.log(response);
+
          setAsyncCallStatus(asyncOperation.SUCCESS);
+         const newBrandMessage = new Message('New brand added.');
+         const { message, messageDetailsArray } = newBrandMessage.getMessageData();
+         dispatch(setMessage(message, messageDetailsArray));
          backToBrandList();
       } catch (error) {
-         console.log(error.response);
-         console.log(error.request);
+         const errorMsg = new ErrorMessage(error);
+         setError(errorMsg);
          setAsyncCallStatus(asyncOperation.ERROR);
       }
    };
@@ -148,17 +152,17 @@ const EditBrandForm = () => {
       setAsyncCallStatus(asyncOperation.LOADING);
       try {
          const response = await adminService.putBrand(brandId, newData);
-         console.log(response);
-         setEditing((prevState) => !prevState);
+
+         turnOffEditModeHandler();
          setAsyncCallStatus(asyncOperation.SUCCESS);
+         const modifiedBrandMessage = new Message('Brand modified.');
+         const { message, messageDetailsArray } = modifiedBrandMessage.getMessageData();
+         dispatch(setMessage(message, messageDetailsArray));
       } catch (error) {
-         console.log(error);
-         console.log(error.response);
          const errorMsg = new ErrorMessage(error);
-         console.log(errorMsg);
          setError(errorMsg);
+         turnOffEditModeHandler();
          setAsyncCallStatus(asyncOperation.ERROR);
-         disableEditModeHandler();
       }
    };
 
@@ -168,7 +172,7 @@ const EditBrandForm = () => {
       setEditing((prevState) => !prevState);
    };
 
-   const disableEditModeHandler = () => {
+   const turnOffEditModeHandler = () => {
       setEditing(false);
    };
 
@@ -177,19 +181,21 @@ const EditBrandForm = () => {
    };
 
    const removeBrandHandler = async () => {
-      const operationIsConfirmed = await isConfirmed('Product will be removed. Please confirm.');
+      const operationIsConfirmed = await isConfirmed('Brand will be removed. Please confirm.');
 
       if (!operationIsConfirmed) return;
       setAsyncCallStatus(asyncOperation.LOADING);
       try {
          const response = await adminService.removeBrand(id);
          setAsyncCallStatus(asyncOperation.SUCCESS);
+         const removeBrandMessage = new Message('Brand deleted.');
+         const { message, messageDetailsArray } = removeBrandMessage.getMessageData();
+         dispatch(setMessage(message, messageDetailsArray));
          backToBrandList();
       } catch (error) {
          const errorMsg = new ErrorMessage(error);
          setError(errorMsg);
          setAsyncCallStatus(asyncOperation.ERROR);
-         disableEditModeHandler();
       }
    };
 
