@@ -6,7 +6,9 @@ const User = require('../model/user');
 const { calculateCartTotalPriceAndDiscount, getOrderData } = require('../utility/shop')
 
 const STRIPE_KEY = process.env.STRIPE_KEY;
-const STRIPE_ENDPOINT_SECRET= process.env.STRIPE_CLIENT_KEY;
+const STRIPE_ENDPOINT_SECRET= process.env.STRIPE_ENDPOINT_SECRET;
+// console.log('STRIPE_KEY: ', STRIPE_KEY)
+// console.log('STRIPE_ENDPOINT_SECRET: ', STRIPE_ENDPOINT_SECRET)
 
 const stripe = require('stripe')(STRIPE_KEY);
 
