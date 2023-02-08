@@ -8,12 +8,12 @@ const priceToDisplay = (price) => {
 
 const OrderDetails = ({ productData }) => {
 
-      const { productCategory, productBrand, productName, productType, productPrice, quantity, images, productId, productSize } = productData;
+      const { productCategory, productBrand, productName, productType, productPrice, quantity, primaryImage, productId, productSize } = productData;
 
       return (
             <li className={styles['item']}>
                   <img className={styles['item__image']}
-                        src={`http://localhost:5000/images/${images[0].fileName}`}
+                        src={`${primaryImage.url}`}
                         alt={productCategory} />
                   <div className={styles['item__details']}>
                         <div className={styles['item__description']}>

@@ -3,12 +3,13 @@ import { store } from '../store/store'
 
 import { tokenService } from '../utility/auth';
 import { authService } from '../services/authService';
+import { isDev } from '../utility/helpers';
 
 import { logout } from '../store/actions'
 
 const { dispatch } = store;
 
-const API_URL =  process.env.NODE_ENV === "development" ? 'http://localhost:5000/api' : process.env.REACT_APP_API_URL;
+const API_URL =  isDev() ? 'http://localhost:5000/api' : process.env.REACT_APP_API_URL;
 
 console.log(process.env.NODE_ENV)
 

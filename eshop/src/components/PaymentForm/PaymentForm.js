@@ -9,13 +9,13 @@ import AsyncOpBgComponent from '../AsyncOpBgComponent/AsyncOpBgComponent';
 import CartSummary from '../CartData/CartSummary/CartSummary';
 
 import { paymentService } from '../../services/paymentService';
-import { ErrorMessage, Message } from '../../utility/helpers';
+import { ErrorMessage, Message  } from '../../utility/helpers';
 import { setRedirectPath, setMessage } from '../../store/actions';
 
 import styles from './PaymentForm.module.scss';
 
 const STRIPE_KEY = process.env.REACT_APP_STRIPE_KEY;
-const stripePromise = loadStripe('pk_test_ZSIVv4ipVlyYZescPHUSte1F00lV0sfi4o');
+const stripePromise = loadStripe(STRIPE_KEY);
 
 const asyncOperation = {
       IDLE: 'idle',
