@@ -28,7 +28,7 @@ const SizeSystemTable = () => {
                         _id: sizeSystem._id,
                         sizeSystemName: sizeSystem.sizeSystemName,
                         options: {
-                              isOwner: true
+                              isOwner: sizeSystem.isOwner
                         }
 
                   }

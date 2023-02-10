@@ -189,7 +189,7 @@ const EditBrandForm = () => {
       try {
          const response = await adminService.removeBrand(id);
          setAsyncCallStatus(asyncOperation.SUCCESS);
-         const removeBrandMessage = new Message('Brand deleted.');
+         const removeBrandMessage = new Message('Brand removed.');
          const { message, messageDetailsArray } = removeBrandMessage.getMessageData();
          dispatch(setMessage(message, messageDetailsArray));
          backToBrandList();

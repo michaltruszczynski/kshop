@@ -80,7 +80,7 @@ exports.getBands = async (req, res, next) => {
          return {
             _id,
             brandName,
-            isOwner: owner ? owner.toString() === user._id.toString() : 1,
+            isOwner: owner ? owner.toString() === user._id.toString() : false,
          };
       });
 
@@ -107,7 +107,7 @@ exports.getBrand = async (req, res, next) => {
       }
 
       const brandData = brand.toObject();
-      brandData.isOwner = brandData.owner ? brandData.owner.toString() === user._id.toString() : 1;
+      brandData.isOwner = brandData.owner ? brandData.owner.toString() === user._id.toString() : false;
 
       res.status(200).json(brandData);
    } catch (error) {
@@ -160,7 +160,7 @@ exports.putBrand = async (req, res, next) => {
 };
 
 exports.removeBrand = async (req, res, next) => {
-   let brandId = req.params.id;
+   const brandId = req.params.id;
    const { user } = req;
 
    try {

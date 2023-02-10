@@ -55,7 +55,7 @@ const App = () => {
           </Route>
           <Route path="/signup" component={Signup} />
           <Route path="/signin" component={Signin} />
-          <Route path="/admin" component={AdminPages}>
+          <Route path="/admin">
             <AdminPages />
           </Route>
           <Route path="/servererror" component={ErrorRedirectPage} />

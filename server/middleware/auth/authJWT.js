@@ -7,7 +7,7 @@ const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 const verifyToken = async (req, res, next) => {
       const authToken = req.headers['x-access-token'];
-      console.log('[MDW verifyToken]: ', authToken);
+      // console.log('[MDW verifyToken]: ', authToken);
 
       try {
             if (!authToken || authToken == null) {

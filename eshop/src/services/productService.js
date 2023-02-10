@@ -24,6 +24,10 @@ export const putSizeSystem = (id, data) => {
       return axiosInstance.put(`/admin/sizesystem/${id}`, data);
 }
 
+export const removeSizeSystem = (id) => {
+      return axiosInstance.get(`/admin/removesizesystem/${id}`);
+}
+
 export const postNewBrand = (data) => {
       return axiosInstance.post(`/admin/brand`, data);
 }

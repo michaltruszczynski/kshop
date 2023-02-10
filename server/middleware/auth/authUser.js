@@ -20,7 +20,7 @@ const verifyUserRole = (allowedRoles = defaultAllowedRoles) => async (req, res, 
             // }, false);
 
             const userHasPermission = allowedDBRolesId.includes(userRolesId);
-            console.log('userHasPermission: ', userHasPermission)
+            // console.log('userHasPermission: ', userHasPermission)
             if (!userHasPermission) {
                   const error = new Error('Not authorized. Forbiden resources for user role.');
                   error.statusCode = 403;

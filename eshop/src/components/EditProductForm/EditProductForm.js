@@ -246,7 +246,7 @@ const EditProductForm = () => {
       try {
          const response = await adminService.removeProduct(id);
          setAsyncCallStatus(asyncOperation.SUCCESS);
-         const removeProductMessage = new Message('Brand deleted.');
+         const removeProductMessage = new Message('Product removed.');
          const { message, messageDetailsArray } = removeProductMessage.getMessageData();
          dispatch(setMessage(message, messageDetailsArray));
          backToProductList();

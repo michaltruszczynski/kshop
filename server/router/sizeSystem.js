@@ -3,24 +3,53 @@ const router = express.Router();
 
 const sizeSystemController = require('../controllers/sizeSystem');
 
-const { sizeSystemDataValidation } = require('../middleware/sizeSystemValidators/sizeSystemValidators');
+const { sizeSystemDataValidation, sizeSystemIdValidation } = require('../middleware/sizeSystemValidators/sizeSystemValidators');
 
 const { dataErrorHandler, throwError } = require('../middleware/errorHandlers/errorHandlers');
 
-router.post('/sizesystem',
-      sizeSystemDataValidation(),
-      dataErrorHandler,
-      throwError('Size system data validation failed.'),
-      sizeSystemController.postSizeSystem);
+const { verifyToken } = require('../middleware/auth/authJWT');
+const { verifyUserRole } = require('../middleware/auth/authUser');
 
-router.put('/sizesystem/:id',
-      sizeSystemDataValidation(),
-      dataErrorHandler,
-      throwError('Size system data validation failed.'),
-      sizeSystemController.putSizeSystem);
+router.post(
+   '/sizesystem',
+   verifyToken,
+   verifyUserRole(['admin', 'employee']),
+   sizeSystemDataValidation(),
+   dataErrorHandler,
+   throwError('Size system data validation failed.'),
+   sizeSystemController.postSizeSystem
+);
 
-router.get('/sizesystems', sizeSystemController.getSizeSystems);
+router.put(
+   '/sizesystem/:id',
+   verifyToken,
+   verifyUserRole(['admin', 'employee']),
+   sizeSystemDataValidation(),
+   dataErrorHandler,
+   throwError('Size system data validation failed.'),
+   sizeSystemController.putSizeSystem
+);
 
-router.get('/sizesystems/:id', sizeSystemController.getSizeSystem);
+router.get('/sizesystems', verifyToken, verifyUserRole(['admin', 'employee']), sizeSystemController.getSizeSystems);
+
+router.get(
+   '/sizesystems/:id',
+   verifyToken,
+   verifyUserRole(['admin', 'employee']),
+   sizeSystemIdValidation(),
+   dataErrorHandler,
+   throwError('Size system data validation failed.'),
+   sizeSystemController.getSizeSystem
+);
+
+router.get(
+   '/removesizesystem/:id',
+   verifyToken,
+   verifyUserRole(['admin', 'employee']),
+   sizeSystemIdValidation(),
+   dataErrorHandler,
+   throwError('Size system data validation failed.'),
+   sizeSystemController.removeSizeSystem
+);
 
 module.exports = router;

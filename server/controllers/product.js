@@ -52,7 +52,7 @@ exports.getAllProducts = async (req, res, next) => {
             category,
             brand,
             price: parseFloat(price).toFixed(2),
-            isOwner: owner ? owner.toString() === user._id.toString() : 1,
+            isOwner: owner ? owner.toString() === user._id.toString() : false,
             inStock,
             inOffer,
          };
@@ -203,7 +203,7 @@ exports.deleteProduct = async (req, res, next) => {
 };
 
 exports.removeProduct = async (req, res, next) => {
-   let productId = req.params.id;
+   const productId = req.params.id;
    const { user } = req;
 
    try {
