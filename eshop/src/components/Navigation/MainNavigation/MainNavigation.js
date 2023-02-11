@@ -11,77 +11,101 @@ import LogoutIcon from '../LogoutIcon/LogoutIcon';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon';
 import ButtonLink from '../ButtonLink/ButtonLink';
 
-import { logout } from '../../../store/actions'
+import { logout } from '../../../store/actions';
+
+import { useWindowSize } from '../../../hooks/useWindowSize';
 
 import styles from './MainNavigation.module.scss';
 
 const MainNavigation = () => {
-      const [navFixed, setNavFixed] = useState(false);
-      const [mobileNavOpen, setMobileNavOpen] = useState(false);
-      const authState = useSelector(state => state.auth);
-      const dispatch = useDispatch();
-      const { userId } = authState;
+   const [navFixed, setNavFixed] = useState(false);
+   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+   const authState = useSelector((state) => state.auth);
+   const dispatch = useDispatch();
+   const { userId } = authState;
+   const windowSize = useWindowSize();
 
-      useEffect(() => {
-            const handleScroll = () => {
-                  const navHeight = 1;
-                  const currentScrolPosition = window.pageYOffset;
-                  setNavFixed(currentScrolPosition > navHeight);
+   useEffect(() => {
+      const handleScroll = () => {
+         const navHeight = 1;
+         const currentScrolPosition = window.pageYOffset;
+         setNavFixed(currentScrolPosition > navHeight);
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+         window.removeEventListener('scroll', handleScroll);
+      };
+   }, []);
+
+
+   useEffect(() => {
+      if (windowSize.width > 767.98) {
+            if (mobileNavOpen) {
+               closeMobileNav();
             }
+         }
+   },[windowSize])
 
-            window.addEventListener('scroll', handleScroll);
-            return () => {
-                  window.removeEventListener('scroll', handleScroll);
-            }
-      }, []);
+   const closeMobileNav = () => {
+      setMobileNavOpen(false);
+   };
 
-      const closeMobileNav = () => {
-            setMobileNavOpen(false);
-      }
+   const mobileNavHandler = () => {
+      setMobileNavOpen((mobileNavOpen) => !mobileNavOpen);
+   };
 
-      const mobileNavHandler = () => {
-            setMobileNavOpen(mobileNavOpen => !mobileNavOpen);
-      }
+   const logoutHandler = () => {
+      dispatch(logout());
+   };
 
-      let navClasses = styles['navigation'];
+   let navClasses = styles['navigation'];
 
-      if (navFixed) {
-            navClasses = [styles['navigation'], styles['navigation--fixed']].join(' ');
-      }
+   if (navFixed) {
+      navClasses = [styles['navigation'], styles['navigation--fixed']].join(' ');
+   }
 
-      const logoutHandler = () => {
-            dispatch(logout())
-      }
+   
 
-      return (
-            <nav className={navClasses}>
-                  <div className={styles['navigation__container']}>
-                        <div className={styles['navigation__left']}>
-                              <ButtonLink onClick={mobileNavHandler}>
-                                    <HamburgerIcon />
-                              </ButtonLink>
-                              <Logo />
-                        </div>
-                        <div className={styles['navigation__right']}>
-                              <Backdrop show={mobileNavOpen} onBackdropClick={closeMobileNav} />
-                              <NavigationItems isMobileNavOpen={mobileNavOpen} closeMobileNav={closeMobileNav} />
-                              <NavLink
-                                    to={ userId ? "/user" : "/signin"}
-                                    className={styles['navigation__link']} >
-                                    <UserIcon />
-                              </NavLink>
-                              <NavLink to="/cart" className={styles['navigation__link']}>
-                                    <CartIcon />
-                              </NavLink>
-                              {!!userId &&
-                                    <ButtonLink onClick={logoutHandler} >
-                                          <LogoutIcon />
-                                    </ButtonLink>
-                              }
-                        </div>
-                  </div>
-            </nav>
-      )
-}
+   return (
+      <nav className={navClasses}>
+         <div className={styles['navigation__container']}>
+            <div className={styles['navigation__left']}>
+               <ButtonLink onClick={mobileNavHandler}>
+                  <HamburgerIcon />
+               </ButtonLink>
+               <Logo />
+            </div>
+            <div className={styles['navigation__right']}>
+               <Backdrop
+                  show={mobileNavOpen}
+                  onBackdropClick={closeMobileNav}
+               />
+               <NavigationItems
+                  isMobileNavOpen={mobileNavOpen}
+                  closeMobileNav={closeMobileNav}
+               />
+               <NavLink
+                  to={userId ? '/user' : '/signin'}
+                  className={styles['navigation__link']}
+               >
+                  <UserIcon />
+               </NavLink>
+               <NavLink
+                  to='/cart'
+                  className={styles['navigation__link']}
+               >
+                  <CartIcon />
+               </NavLink>
+               {!!userId && (
+                  <ButtonLink onClick={logoutHandler}>
+                     <LogoutIcon />
+                  </ButtonLink>
+               )}
+            </div>
+         </div>
+      </nav>
+   );
+};
 
 export default MainNavigation;

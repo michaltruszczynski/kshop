@@ -17,6 +17,8 @@ import Signin from './pages/AuthPages/Signin/Signin';
 import ErrorRedirectPage from './pages/ErrorRedirectPage/ErrorRedirectPage';
 import AsyncOpBgComponent from './components/AsyncOpBgComponent/AsyncOpBgComponent';
 import AdminPages from './pages/AdminPages/AdminPages';
+
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import ScrollToTop from './components/UI/ScrollToTop/ScrollToTop';
 
 import { authCheck } from './store/actions/';
@@ -24,46 +26,68 @@ import { authCheck } from './store/actions/';
 import './App.scss';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const auth = useSelector(state => state.auth);
-  const { asyncOperation, error } = auth;
+   const dispatch = useDispatch();
+   const auth = useSelector((state) => state.auth);
+   const { asyncOperation, error } = auth;
 
-  useLayoutEffect(() => {
-    dispatch(authCheck())
-  }, []);
+   useLayoutEffect(() => {
+      dispatch(authCheck());
+   }, []);
 
-  return (
-    <AsyncOpBgComponent status={asyncOperation} error={null}>
-      <Layout>
-        <ScrollToTop />
-        <Switch>
-          <Route path="/shop" component={Products} />
-          <Route path="/product/:id">
-            <ProductPage />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-          <Route path="/checkout">
-            <PaymentPage />
-          </Route>
-          <Route path="/user">
-            <User />
-          </Route>
-          <Route path="/order/:id">
-            <Order />
-          </Route>
-          <Route path="/signup" component={Signup} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/admin">
-            <AdminPages />
-          </Route>
-          <Route path="/servererror" component={ErrorRedirectPage} />
-          <Route component={Shop} />
-        </Switch >
-      </Layout>
-    </AsyncOpBgComponent>
-  );
-}
+   return (
+      <AsyncOpBgComponent
+         status={asyncOperation}
+         error={null}
+      >
+         <Layout>
+            <ScrollToTop />
+            <Switch>
+               <Route
+                  path='/shop'
+                  component={Products}
+               />
+               <Route path='/product/:id'>
+                  <ProductPage />
+               </Route>
+               <Route path='/cart'>
+                  <Cart />
+               </Route>
+               <Route path='/checkout'>
+                  <PaymentPage />
+               </Route>
+               <ProtectedRoute
+                  path='/user'
+                  allowedRoles={['user', 'employee', 'admin']}
+                  onlyAuth={true}
+               >
+                  <User />
+               </ProtectedRoute>
+               <ProtectedRoute
+                  path='/order/:id'
+                  allowedRoles={['user', 'employee', 'admin']}
+                  onlyAuth={true}
+               >
+                  <Order />
+               </ProtectedRoute>
+               <Route path='/signup'>
+                  <Signup />
+               </Route>
+               <Route path='/signin'>
+                  <Signin />
+               </Route>
+               <Route path='/admin'>
+                  <AdminPages />
+               </Route>
+               <Route path='/servererror'>
+                  <ErrorRedirectPage />
+               </Route>
+               <Route>
+                  <Shop />
+               </Route>
+            </Switch>
+         </Layout>
+      </AsyncOpBgComponent>
+   );
+};
 
 export default App;

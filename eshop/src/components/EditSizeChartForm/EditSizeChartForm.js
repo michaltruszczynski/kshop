@@ -6,7 +6,6 @@ import SizeChartNameInput from './SizeChartNameInput/SizeChartNameInput';
 import CustomSizeChart from '../Form/CustomSizeChart/CustomSizeChart';
 import AsyncOpBgComponent from '../AsyncOpBgComponent/AsyncOpBgComponent';
 import ControlButtons from './ControlButtons/ControlButtons';
-import Button from '../Button/Button';
 
 import useForm from '../../hooks/useForm';
 
@@ -207,65 +206,3 @@ const EditSizeChartForm = () => {
 };
 
 export default EditSizeChartForm;
-
-// {!editing && !sizeSystemId && (
-//       <Button
-//          onClick={submitHandler}
-//          buttonType='success'
-//          buttonStyle='standard'
-//          disabled={isFormDataValid}
-//          type='submit'
-//       >
-//          Save
-//       </Button>
-//    )}
-//    {editing && sizeSystemId && (
-//       <>
-//          <Button
-//             onClick={updateHandler}
-//             buttonType='success'
-//             buttonStyle='standard'
-//             disabled={isFormDataValid}
-//             type='submit'
-//          >
-//             Update
-//          </Button>
-//          <Button
-//             onClick={submitHandler}
-//             buttonType='success'
-//             buttonStyle='standard'
-//             disabled={isFormDataValid}
-//             type='submit'
-//          >
-//             Save as new
-//          </Button>
-//          <Button
-//             onClick={changeEditModeHandler}
-//             buttonType='success'
-//             buttonStyle='standard'
-//             type='submit'
-//          >
-//             Cancel
-//          </Button>
-//       </>
-//    )}
-//    {!editing && sizeSystemId && (
-//       <>
-//          <Button
-//             onClick={changeEditModeHandler}
-//             buttonType='success'
-//             buttonStyle='standard'
-//             type='submit'
-//          >
-//             Edit
-//          </Button>
-//          <Button
-//             onClick={backToSizeSystemList}
-//             buttonType='success'
-//             buttonStyle='standard'
-//             type='submit'
-//          >
-//             Back to list
-//          </Button>
-//       </>
-//    )}

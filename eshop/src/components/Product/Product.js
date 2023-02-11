@@ -11,7 +11,7 @@ const Product = ({ productImage, productName, productPrice, sale = 0, id, produc
       <div className={styles["product"]}>
          <div className={styles["product__header"]}>
             <img className={styles["product__image"]} src={productImage.url} alt={productImage.name} />
-            <ul className={styles["icons"]}>
+            {/* <ul className={styles["icons"]}>
                <span className={styles["icon__container"]}>
                   <i className="bx bx-heart"></i>
                </span>
@@ -21,7 +21,7 @@ const Product = ({ productImage, productName, productPrice, sale = 0, id, produc
                <span className={styles["icon__container"]}>
                   <i className="bx bx-search"></i>
                </span>
-            </ul>
+            </ul> */}
          </div>
          <div className={styles["product__footer"]}>
             {/* <Link to="/" className={styles['product__link']}> */}
