@@ -1,6 +1,6 @@
 export const inOfferInputConfig = {
       inOffer: {
-            elementName: 'Product availble in store: ',
+            elementName: 'Product available in store: ',
             elementType: 'toggleSwitch',
             elementConfig: {
                   name: 'inOffer',

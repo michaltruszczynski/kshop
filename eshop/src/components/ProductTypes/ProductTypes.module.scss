@@ -70,6 +70,10 @@
       }
 }
 
+.link {
+      text-decoration: none;
+}
+
 @media only screen and (max-width: $mediaXLDevices) {
       .section {
             .type-list {

@@ -11,9 +11,6 @@ const EditBrand = () => {
       return (
             <section className={styles['section']}>
                   <div className={styles['section__container']}>
-                        <div className={styles['title']}>
-                              <h1 className={styles['title__text']}>Add Brand</h1>
-                        </div>
                         <div>
                               <EditBrandForm key={id} />
                         </div>

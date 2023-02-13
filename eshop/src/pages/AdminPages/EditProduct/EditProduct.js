@@ -11,9 +11,6 @@ const EditProduct = () => {
       return (
             <section className={styles['section']}>
                   <div className={styles['section__container']}>
-                        <div className={styles['title']}>
-                              <h1 className={styles['title__text']}>Add Product</h1>
-                        </div>
                         <div>
                               <EditProductForm key={id} />
                         </div>

@@ -2,20 +2,20 @@
 MERN stack e-commerce project. A single page application which allows:
 - customers to purchase kite and windsurfing gear,
 - sellers and merchants to manage their product offer,
-- admins to manage and controll store components
+- admins to manage and controll store components.
 
 ## Demo
 This application is deployed on Render https://eshop-54sk.onrender.com
 
-An administrator account login credentials:
-**email:** admin@test.com
-**password:** Administrator1!
+An administrator account login credentials:</br>
+**email:** admin@test.com</br>
+**password:** Administrator1!</br>
 
-New user always get buyer role (default settings). Change your user role using administrator account.
+New user always get buyer role (default settings). Change your user role using administrator account.</br>
 Please go to Main Feature section to find out more about each role defined actions
 
 ## Technology
-Project is created with:
+Project is created with:</br>
 **Client:** React, React Redux, Redux Thunk, React Router,  Sass
 
 **Server:** Node, Express, MongoDB, Mongoose, AWS, Stripe

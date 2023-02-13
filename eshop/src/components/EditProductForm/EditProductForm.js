@@ -263,6 +263,9 @@ const EditProductForm = () => {
          error={error}
          showErrorMessage={true}
       >
+         <div className={styles['title']}>
+            <h1 className={styles['title__text']}>{id ? 'Edit Product' : 'Add Product'}</h1>
+         </div>
          <form className={styles['form']}>
             <InOffer
                inOfferData={inOfferData}

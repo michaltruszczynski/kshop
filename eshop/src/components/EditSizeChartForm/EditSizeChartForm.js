@@ -175,7 +175,9 @@ const EditSizeChartForm = () => {
          status={asyncCallStatus}
          error={error}
          showErrorMessage={true}
-      >
+      ><div className={styles['title']}>
+            <h1 className={styles['title__text']}>{id ? 'Edit Size System' : 'Add Size System'}</h1>
+         </div>
          <form className={styles['form']}>
             <SizeChartNameInput
                inputSizeChartNameData={inputSizeSystemNameData}

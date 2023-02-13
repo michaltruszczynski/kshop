@@ -57,7 +57,7 @@ exports.postSignin = async (req, res, next) => {
             const user = await User
                   .findOne({ email: email })
                   .populate({ path: 'userRole', select: 'name email -_id' })
-                  .populate({ path: 'orders', select: '-_userId -updatedAt -__v' });
+                  .populate({ path: 'orders', select: '-_userId -updatedAt -__v', options: { sort: { createdAt: -1 } } });
             console.log('user', user);
             if (!user) {
                   const error = new Error('A user with this email can not be found.');
@@ -120,7 +120,7 @@ exports.postSignin = async (req, res, next) => {
 exports.getCheckUser = async (req, res, next) => {
       try {
             const authToken = req.headers['x-access-token'];
-            // console.log(authToken);
+            console.log(authToken);
 
             if (!authToken || authToken == null) {
                   const error = new Error('Not authenticated.');
@@ -128,7 +128,7 @@ exports.getCheckUser = async (req, res, next) => {
                   throw error;
             }
             let decodedToken = jwt.verify(authToken, ACCESS_TOKEN_SECRET);
-            // console.log('decodedToken: ', decodedToken)
+            console.log('decodedToken: ', decodedToken)
             if (!decodedToken) {
                   const error = new Error('Not authenticated.');
                   error.statusCode = 401;
@@ -137,8 +137,8 @@ exports.getCheckUser = async (req, res, next) => {
 
             const user = await User.findOne({ _id: decodedToken.userId })
                   .populate({ path: 'userRole', select: 'name email -_id' })
-                  .populate({ path: 'orders', select: '-_userId -updatedAt -__v' });
-            // console.log('user: ', user);
+                  .populate({ path: 'orders', select: '-_userId -updatedAt -__v', options: { sort: { createdAt: -1 } }});
+            console.log('user: ', user);
             if (!user) {
                   const error = new Error('Not authenticated. A user can not be found.');
                   error.statusCode = 401;

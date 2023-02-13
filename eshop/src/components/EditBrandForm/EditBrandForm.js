@@ -67,7 +67,7 @@ const EditBrandForm = () => {
             setAsyncCallStatus(asyncOperation.SUCCESS);
          } catch (error) {
             const errorMsg = new ErrorMessage(error);
-         setError(errorMsg);
+            setError(errorMsg);
             setAsyncCallStatus(asyncOperation.ERROR);
          }
       };
@@ -206,6 +206,9 @@ const EditBrandForm = () => {
          error={error}
          showErrorMessage={true}
       >
+         <div className={styles['title']}>
+            <h1 className={styles['title__text']}>{id ? 'Edit Brand' : 'Add Brand'}</h1>
+         </div>
          <form className={styles['form']}>
             <BrandNameInput
                inputBrandNameData={inputBrandNameData}

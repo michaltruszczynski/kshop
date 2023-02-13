@@ -11,9 +11,6 @@ const EditSizeChartSystem = () => {
       return (
             <section className={styles['section']}>
                   <div className={styles['section__container']}>
-                        <div className={styles['title']}>
-                              <h1 className={styles['title__text']}>Add Size Chart System</h1>
-                        </div>
                         <div>
                               <EditSizeChartForm key={id} />
                         </div>
