@@ -20,8 +20,6 @@ const Slider = ({ autoPlay, controls, imagesArray, imagesMaxNumber }) => {
                   slidesHelperArray = [].concat(imagesArray[imagesArray.length - 1], imagesArray, imagesArray.slice(0, imagesMaxNumber + 1));
             }
 
-            console.log(imagesMaxNumber)
-
             return {
                   activeSlide: 0,
                   translate: 0,
@@ -34,7 +32,6 @@ const Slider = ({ autoPlay, controls, imagesArray, imagesMaxNumber }) => {
       });
 
       const { translate, transition, slidesArray, activeSlide, slidesHelperArray, slidesVisibleNumber, arrowsActive } = state;
-      // console.log(slidesVisibleNumber);
       const nextSlide = useCallback(() => {
             if (!arrowsActive) return;
             setState((state) => {

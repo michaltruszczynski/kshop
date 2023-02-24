@@ -2,7 +2,7 @@
 MERN stack e-commerce project. A single page application which allows:
 - customers to purchase kite and windsurfing gear,
 - sellers and merchants to manage their product offer,
-- admins to manage and controll store components.
+- admins to manage and control store components.
 
 ## Demo
 This application is deployed on Render https://eshop-54sk.onrender.com
@@ -21,7 +21,7 @@ Project is created with:</br>
 **Server:** Node, Express, MongoDB, Mongoose, AWS, Stripe
 
 ## Main Features
-* User cathegories:
+* User categories:
     * buyer,
     * employee,
     * administrator
@@ -33,15 +33,15 @@ Project is created with:</br>
     * product brand,
     * price – ascending, descending
 
-    Single product page presents detailed information about product. Product images are displalyed using custm slider (no third party component used).
+    Single product page presents detailed information about product. Product images are displayed using custom slider (no third party component used).
     Once product is added to cart it can be purchased. Buyer needs to create account and be logged in to proceed to checkout.
     Payments are handled using Stripe. Sample credit card details are provided on the checkout page.
-    Order is included on buyer order list once server receives confirmation from Stripe that funds have been sucessfully transffered.
+    Order is included on buyer order list once server receives confirmation from Stripe that funds have been successfully transferred.
 
-* Employee functinality
+* Employee functionality
 Manage products available in eshop, that is:
     * add and edit brand,
-    * add and edit sizesystem,
+    * add and edit size system,
     * add and edit product,
 
     Employee can only modify entries brand, size system, product that given employee created.
@@ -70,10 +70,10 @@ Administrator is allowed to perform the same operation as employee and additiona
     * name,
     * size chart (dynamic input field).
 
-All forms have both forntend and backend validation.
+All forms have both frontend and backend validation.
 
 ## Install Dependencies (frontend & backend)
-Fontend:
+Frontend:
 cd eshop
 npm install
 
@@ -84,3 +84,7 @@ npm install
 ## Run frontend (:3000) & backend (:5000)
 cd eshop
 npm run dev
+
+## To do list:
+1. Persist shopping cart.
+2. Refactoring forms.

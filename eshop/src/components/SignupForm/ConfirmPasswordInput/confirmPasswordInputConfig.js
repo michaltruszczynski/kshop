@@ -5,7 +5,7 @@ export const confirmPasswordInputConfig = {
             elementName: 'Confirm password',
             elementType: 'inputText',
             elementConfig: {
-                  type: 'text',
+                  type: 'password',
                   name: 'confirmPassword',
                   id: 'confirmPassword',
                   defaultValue: '',

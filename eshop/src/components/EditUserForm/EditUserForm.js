@@ -119,6 +119,7 @@ const EditUserForm = () => {
                                                 onClick={updateHandler}
                                                 buttonType="success"
                                                 buttonStyle="standard"
+                                                type="button"
                                                 disabled={isFormDataValid} type="submit">
                                                 Update
                                           </Button>
@@ -126,7 +127,7 @@ const EditUserForm = () => {
                                                 onClick={changeEditModeHandler}
                                                 buttonType="success"
                                                 buttonStyle="standard"
-                                                type="submit">
+                                                type="button">
                                                 Cancel
                                           </Button>
                                     </>
@@ -136,7 +137,7 @@ const EditUserForm = () => {
                                           onClick={changeEditModeHandler}
                                           buttonType="success"
                                           buttonStyle="standard"
-                                          type="submit">
+                                          type="button">
                                           Edit
                                     </Button>
                               )}
@@ -145,7 +146,7 @@ const EditUserForm = () => {
                                           onClick={backToSizeSystemList}
                                           buttonType="success"
                                           buttonStyle="standard"
-                                          type="submit">
+                                          type="button">
                                           Back to list
                                     </Button>
                               )}

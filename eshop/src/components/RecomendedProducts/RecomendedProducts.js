@@ -8,7 +8,6 @@ import styles from "./RecomendedProducts.module.scss";
 const RecomendedProducts = () => {
    const productsSearchParams = new URLSearchParams();
    productsSearchParams.append("count", 4);
-   console.log(productsSearchParams.toString());
 
    const searchProductsUrl = `/shop/products/random`;
 

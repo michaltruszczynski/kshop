@@ -5,7 +5,7 @@ export const passwordInputConfig = {
             elementName: 'Password',
             elementType: 'inputText',
             elementConfig: {
-                  type: 'text',
+                  type: 'password',
                   name: 'password',
                   id: 'password',
                   defaultValue: '',
