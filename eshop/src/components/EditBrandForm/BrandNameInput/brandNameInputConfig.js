@@ -11,7 +11,7 @@ export const brandNameInputConfig = {
                   defaultValue: '',
                   placeholder: 'Enter brand name.',
                   validators: [
-                        { check: length({min: 5, max: 35}), message: 'Brand name must be 5 - 35 characters long.' }
+                        { check: length({min: 3, max: 15}), message: 'Brand name must be 3 - 15 characters long.' }
                   ],
                   addClassName: []
             }

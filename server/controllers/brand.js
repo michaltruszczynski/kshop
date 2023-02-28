@@ -164,6 +164,20 @@ exports.removeBrand = async (req, res, next) => {
    const { user } = req;
 
    try {
+      const brand = await Brand.findById(brandId);
+
+      if (!brand) {
+         const error = new Error('Could not find brand.');
+         error.statusCode = 404;
+         throw error;
+      }
+
+      if (user._id.toString() !== brand.owner.toString()) {
+         const error = new Error('You are not authorized to perform this operation.');
+         error.statusCode = 403;
+         throw error;
+      }
+
       const response = await Brand.updateOne(
          {
             _id: brandId,

@@ -110,6 +110,20 @@ exports.removeSizeSystem = async (req, res, next) => {
    const { user } = req;
 
    try {
+      const sizeSystem = await SizeSystem.findById(sizeSystemId);
+
+      if (!sizeSystem) {
+         const error = new Error('Could not find size system.');
+         error.statusCode = 404;
+         throw error;
+      }
+
+      if (user._id.toString() !== sizeSystem.owner.toString()) {
+         const error = new Error('You are not authorized to perform this operation.');
+         error.statusCode = 403;
+         throw error;
+      }
+
       const response = await SizeSystem.updateOne(
          {
             _id: sizeSystemId,
@@ -128,7 +142,7 @@ exports.removeSizeSystem = async (req, res, next) => {
       const { modifiedCount } = response;
 
       if (!modifiedCount) {
-         const error = new Error('Could not find brand.');
+         const error = new Error('Could not find size system.');
          error.statusCode = 404;
          throw error;
       }

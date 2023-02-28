@@ -5,8 +5,8 @@ const getUser = (id) => {
       return axiosInstance.get(`/admin/users/${id}`);
 }
 
-const putUser = (id, data) => {
-      return axiosInstance.put(`/admin/users/${id}`, data);
+const putUser = (data) => {
+      return axiosInstance.put(`/admin/users`, data);
 }
 
 const getProducts = () => {

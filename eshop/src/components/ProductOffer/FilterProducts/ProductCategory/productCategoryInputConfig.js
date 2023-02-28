@@ -12,7 +12,7 @@ export const producCategoryInputConfig = {
                   options: [
                         { value: 'Kites', displayValue: 'Kites' },
                         { value: 'Boards', displayValue: 'Boards' },
-                        { value: 'Accesories', displayValue: 'Accessories' },
+                        { value: 'Accessories', displayValue: 'Accessories' },
                         { value: 'Wetsiuts', displayValue: 'Wetsiuts' }
                   ],
                   validators: [

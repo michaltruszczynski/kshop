@@ -29,8 +29,8 @@ const navItems = [
             ]
       },
       {
-            id: 'Users', text: 'Users', icon: false, link: '', auth: true, allowedRoles: ['admin'], subMenu: [
-                  { id: 'usersList', text: 'Users List', link: '/admin/users', auth: true, allowedRoles: ['admin'] },
+            id: 'Users', text: 'Users', icon: false, link: '', auth: true, allowedRoles: ['client','employee', 'admin'], subMenu: [
+                  { id: 'usersList', text: 'Users List', link: '/admin/users', auth: true, allowedRoles: ['client','employee', 'admin'] },
             ]
       }
 ]

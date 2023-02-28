@@ -47,9 +47,9 @@ const EditUserForm = () => {
                         const { user } = response.data;
                         const { _id, email, name, userRole } = user;
                         setUserId(_id);
-                        userInfoDataChangeHandler('name')(name);
-                        userInfoDataChangeHandler('email')(email);
-                        userRoleDataChangeHandler('userRole')(userRole.name);
+                        userInfoDataChangeHandler('name')(name, false);
+                        userInfoDataChangeHandler('email')(email, false);
+                        userRoleDataChangeHandler('userRole')(userRole.name, false);
                         setAsyncCallStatus(asyncOperation.SUCCESS);
                   } catch (error) {
                         const errorMsg = new ErrorMessage(error);
@@ -66,12 +66,13 @@ const EditUserForm = () => {
             event.preventDefault();
 
             const updatedUser = {
-                  name: userInfoData.name.value,
+                  userId: userId,
+                  userName: userInfoData.name.value,
                   userRole: userRoleData.userRole.value
             }
             setAsyncCallStatus(asyncOperation.LOADING);
             try {
-                  const response = await adminService.putUser(userId, updatedUser);
+                  const response = await adminService.putUser(updatedUser);
                   setEditing(prevState => !prevState);
                   setAsyncCallStatus(asyncOperation.SUCCESS);
             }
@@ -120,7 +121,7 @@ const EditUserForm = () => {
                                                 buttonType="success"
                                                 buttonStyle="standard"
                                                 type="button"
-                                                disabled={isFormDataValid} type="submit">
+                                                disabled={isFormDataValid}>
                                                 Update
                                           </Button>
                                           <Button
@@ -132,7 +133,7 @@ const EditUserForm = () => {
                                           </Button>
                                     </>
                               )}
-                              {((!editing && userId) && (userId !== authState.userId)) && (
+                              {((!editing && userId)) && (
                                     <Button
                                           onClick={changeEditModeHandler}
                                           buttonType="success"

@@ -64,7 +64,7 @@ const productDataValidation = () => {
       body('urlImages')
          .custom((urlImages, { req }) => {
             const maxFilesNumber = 6;
-            const minFilesNumber = 3;
+            const minFilesNumber = 1;
             let filesNumber = 0;
             let urlImagesNumber = 0;
 
@@ -84,7 +84,7 @@ const productDataValidation = () => {
 
             return filesNumber + urlImagesNumber <= maxFilesNumber && filesNumber + urlImagesNumber >= minFilesNumber;
          })
-         .withMessage('Product image number incorrect, required 3 - 6 images.'),
+         .withMessage('Product image number incorrect, required 1 - 6 images.'),
    ];
 };
 

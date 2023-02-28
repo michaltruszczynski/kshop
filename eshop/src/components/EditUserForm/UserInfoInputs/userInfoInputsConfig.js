@@ -25,9 +25,7 @@ export const userInfoInputConfig = {
                   id: 'email',
                   defaultValue: '',
                   placeholder: 'Enter email.',
-                  validators: [
-                        { check: email, message: 'Please enter a valid email.' }
-                  ],
+                  validators: [],
                   addClassName: [],
                   editable: false
             }

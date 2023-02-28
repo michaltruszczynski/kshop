@@ -2,7 +2,7 @@ import { arrayLength, required } from '../../../utility/validators';
 
 export const productImageInputConfig = {
       images: {
-            elementName: 'Product images (select 3 - 5 images)',
+            elementName: 'Product images (select 1 - 5 images)',
             elementType: '',
             elementConfig: {
                   type: '',

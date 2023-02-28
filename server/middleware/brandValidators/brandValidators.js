@@ -4,8 +4,8 @@ const brandDataValidation = () => {
       return [
             body('brandName')
                   .trim()
-                  .isLength({ min: 5, max: 35 })
-                  .withMessage('Brand name must be at least 5 - 35 characters long.'),
+                  .isLength({ min: 3, max: 15 })
+                  .withMessage('Brand name must be at least 3 - 15 characters long.'),
                   body('urlImages')
                   .custom((urlImages, { req }) => {
                         try {
