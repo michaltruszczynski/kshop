@@ -67,7 +67,7 @@ const EditUserForm = () => {
 
             const updatedUser = {
                   userId: userId,
-                  userName: userInfoData.name.value,
+                  // userName: userInfoData.name.value,
                   userRole: userRoleData.userRole.value
             }
             setAsyncCallStatus(asyncOperation.LOADING);

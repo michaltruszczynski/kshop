@@ -31,7 +31,7 @@ exports.getUser = async (req, res, next) => {
       const { user } = req;
       const userId = user._id;
       if (!req?.params?.id) {
-         const error = new Error('User ID required');
+         const error = new Error('User ID required.');
          error.statusCode = 400;
          throw error;
       }
@@ -44,7 +44,7 @@ exports.getUser = async (req, res, next) => {
          throw error;
       }
 
-      if (requestedUserData._id.toString() !== userId) {
+      if (requestedUserData._id.toString() !== userId.toString()) {
          requestedUserData.name = requestedUserData.name.slice(0, 1).padEnd(requestedUserData.name.length, '*');
          requestedUserData.email = requestedUserData.email.slice(0, 1).padEnd(requestedUserData.email.length, '*');
       }

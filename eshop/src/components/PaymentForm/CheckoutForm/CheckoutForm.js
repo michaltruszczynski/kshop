@@ -63,13 +63,13 @@ const CheckoutForm = ({ totalCartPrice }) => {
             history.push('/cart');
          } else if (response.paymentIntent.status === 'succeeded') {
             const paymentCompletedMessage = new Message('Payment completed.');
-            paymentCompletedMessage.addMessageDetails('Thank you.');
+            paymentCompletedMessage.addMessageDetails('See user page for order list.');
             const { message, messageDetailsArray } = paymentCompletedMessage.getMessageData();
             dispatch(setMessage(message, messageDetailsArray));
             dispatch(resetCart());
             dispatch(authCheck());
             setLoadingStatus(asyncOperation.SUCCESS);
-            history.push('/user');
+            history.push('/');
          }
       } catch (error) {
          const errorMsg = new ErrorMessage(error);

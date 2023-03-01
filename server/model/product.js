@@ -29,7 +29,10 @@ const productSchema = new Schema({
       },
       sizeSystemId: {
             type: String,
-            required: true
+            validate: {
+                  validator: function (v) {return typeof v === 'string'},
+                  required: [true, 'Path `sizeSystemId` is required.']
+            }
       },
       sizeChart: {
             type: [{ sizeDescription: String }],

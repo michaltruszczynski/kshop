@@ -13,7 +13,8 @@ export const userInfoInputConfig = {
                   validators: [
                         { check: length({ min: 5, max: 10 }), message: 'Brand name must be 5 - 10 characters long.' }
                   ],
-                  addClassName: []
+                  addClassName: [],
+                  editable: false
             }
       },
       email: {

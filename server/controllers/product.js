@@ -6,7 +6,6 @@ const { deleteFilesFromS3, copyFilesS3Promise } = require('../middleware/utility
 const getParsedFileName = (fileNameJSON) => {
    if (!fileNameJSON) return [];
    if (!Array.isArray(fileNameJSON)) {
-      console.log('JSON.parse(fileNameJSON): ', JSON.parse(fileNameJSON));
       return [JSON.parse(fileNameJSON)];
    }
 
@@ -146,7 +145,6 @@ exports.putProduct = async (req, res, next) => {
       const { category, name, type, brand, description, sizeSystem, sizeSystemId, sizeChart: sizeChartJSON, urlImages: urlImagesJSON, price, primaryImage, inOffer } = req.body;
 
       const productImages = req.files;
-      console.log('sizeSystemId: ', sizeSystemId);
       const product = await Product.findById(productId);
 
       if (!product) {
@@ -201,7 +199,6 @@ exports.deleteProduct = async (req, res, next) => {
    try {
       const response = await Product.deleteOne({ _id: productId });
    } catch (error) {
-      console.log(error);
       if (!error.statusCode) {
          error.statusCode = 500;
       }
@@ -252,7 +249,6 @@ exports.removeProduct = async (req, res, next) => {
 
       res.status(200).json({ message: 'Product removed.', productId: productId });
    } catch (error) {
-      console.log(error);
       if (!error.statusCode) {
          error.statusCode = 500;
       }

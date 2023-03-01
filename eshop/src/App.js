@@ -32,7 +32,7 @@ const App = () => {
 
    useLayoutEffect(() => {
       dispatch(authCheck());
-   }, []);
+   }, [ ]);
 
    return (
       <AsyncOpBgComponent
@@ -57,14 +57,14 @@ const App = () => {
                </Route>
                <ProtectedRoute
                   path='/user'
-                  allowedRoles={['user', 'employee', 'admin']}
+                  allowedRoles={['client', 'employee', 'admin']}
                   onlyAuth={true}
                >
                   <User />
                </ProtectedRoute>
                <ProtectedRoute
                   path='/order/:id'
-                  allowedRoles={['user', 'employee', 'admin']}
+                  allowedRoles={['client', 'employee', 'admin']}
                   onlyAuth={true}
                >
                   <Order />
