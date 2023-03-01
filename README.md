@@ -5,13 +5,10 @@ MERN stack e-commerce project. A single page application which allows:
 - admins to manage and control store components.
 
 ## Demo
-This application is deployed on Render https://eshop-54sk.onrender.com
+This application is deployed on Render: https://eshop-54sk.onrender.com
+**Please note: App is deployed on Render free tier. As this is free account page will act slow on first initial loads.**
 
-An administrator account login credentials:</br>
-**email:** admin@test.com</br>
-**password:** Administrator1!</br>
-
-New user always get buyer role (default settings). Change your user role using administrator account.</br>
+New user always get client role (default settings). Change your user role using edit user page. User can only change its own role. Details of other users are hidden.</br>
 Please go to Main Feature section to find out more about each role defined actions
 
 ## Technology
@@ -22,7 +19,7 @@ Project is created with:</br>
 
 ## Main Features
 * User categories:
-    * buyer,
+    * client,
     * employee,
     * administrator
 
@@ -48,8 +45,8 @@ Manage products available in eshop, that is:
     Brand, size system, product created by other employees can be used as template to create new entry.
 
 * Administrator functionality
+**Caveat:** For demo and testing purposes administrator role was removed.</br>
 Administrator is allowed to perform the same operation as employee and additionally can change given user role.
-**Caveat:** For demonstration purposes two super users were introduced. Role of the super users can not be changed. Additionally products, brands, size system of these users can not be edited.
 
 * Product form inputs:
     * availability,

@@ -4,7 +4,7 @@ const UserRole = require('../../model/userRole');
 
 const editUserValidation = () => {
    return [
-      body('userName').trim().not().isEmpty().isLength({ min: 5, max: 10 }).withMessage('Name must be 5 - 10 characters long.'),
+      // body('userName').trim().not().isEmpty().isLength({ min: 5, max: 10 }).withMessage('Name must be 5 - 10 characters long.'),
       body('userRole')
          .trim()
          .not()

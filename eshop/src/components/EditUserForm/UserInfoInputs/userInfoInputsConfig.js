@@ -11,7 +11,7 @@ export const userInfoInputConfig = {
                   defaultValue: '',
                   placeholder: 'Enter name.',
                   validators: [
-                        { check: length({ min: 5, max: 10 }), message: 'Brand name must be 5 - 10 characters long.' }
+                        // { check: length({ min: 5, max: 10 }), message: 'Name must be 5 - 10 characters long.' }
                   ],
                   addClassName: [],
                   editable: false

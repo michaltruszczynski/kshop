@@ -34,7 +34,7 @@ const filePickerConfiguration = {
    fileType: ['image/jpeg', 'image/png', 'image/jpg', 'text/plain'],
    maxFileSize: 2000,
    allowDuplicate: false,
-   minFileNumber: 3,
+   minFileNumber: 1,
    maxFileNumber: 6,
 };
 

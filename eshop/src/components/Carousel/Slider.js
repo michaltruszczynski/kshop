@@ -20,6 +20,13 @@ const Slider = ({ autoPlay, controls, imagesArray, imagesMaxNumber }) => {
                   slidesHelperArray = [].concat(imagesArray[imagesArray.length - 1], imagesArray, imagesArray.slice(0, imagesMaxNumber + 1));
             }
 
+            if (imagesArray.length === 2 ) {
+                  slidesHelperArray = [].concat(imagesArray[imagesArray.length - 1], imagesArray, imagesArray[0] );
+            }
+            if (imagesArray.length === 1 ) {
+                  slidesHelperArray = [].concat(imagesArray, imagesArray, imagesArray);
+            }
+
             return {
                   activeSlide: 0,
                   translate: 0,
@@ -167,8 +174,8 @@ const Slider = ({ autoPlay, controls, imagesArray, imagesMaxNumber }) => {
                               return <Slide key={index + 1} content={slide} width={containerWidth / slidesVisibleNumber} />
                         })}
                   </SliderContent>
-                  {controlArrows}
-                  {dots}
+                  {imagesArray.length !== 1 ? controlArrows : null}
+                  {imagesArray.length !== 1 ? dots : null}
             </div>
       )
 }

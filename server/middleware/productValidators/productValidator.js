@@ -3,10 +3,10 @@ const { body, check, param } = require('express-validator');
 const productDataValidation = () => {
    return [
       body('category').trim().not().isEmpty().withMessage('Product category must be provided.'),
-      body('name').trim().isLength({ min: 5, max: 40 }).withMessage('Product name must be 5 - 40 characters long.'),
-      body('type').trim().isLength({ min: 5, max: 50 }).withMessage('Product type must be 5 - 50 characters long.'),
+      body('name').trim().isLength({ min: 3, max: 20 }).withMessage('Product name must be 3 - 20 characters long.'),
+      body('type').trim().isLength({ min: 3, max: 20 }).withMessage('Product type must be 3 - 20 characters long.'),
       body('brand').trim().not().isEmpty().withMessage('Product brand must be provided.'),
-      body('description').trim().isLength({ min: 100, max: 700 }).withMessage('Product description must be 100 - 800 characters long.'),
+      body('description').trim().isLength({ min: 100, max: 700 }).withMessage('Product description must be 100 - 700 characters long.'),
       body('sizeSystem').trim().not().isEmpty().withMessage('Size system must be provided.'),
       check('sizeChart')
          .isJSON()

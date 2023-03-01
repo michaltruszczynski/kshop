@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import UserInfoInputs from './UserInfoInputs/UserInfoInputs';
 import UserRoleInput from './UserRoleInput/UserRoleInput';
@@ -14,6 +14,8 @@ import { userRoleInputConfig } from './UserRoleInput/userRoleInputConfig';
 
 import { adminService } from '../../services/adminService';
 import { ErrorMessage } from '../../utility/helpers';
+
+import {authCheck} from '../../store/actions'
 
 import styles from './EditUserForm.module.scss';
 
@@ -33,6 +35,7 @@ const EditUserForm = () => {
       const [editing, setEditing] = useState(false);
       const { id } = useParams();
       const history = useHistory();
+      const dispatch = useDispatch();
 
       const authState = useSelector(state => state.auth);
 
@@ -74,6 +77,7 @@ const EditUserForm = () => {
             try {
                   const response = await adminService.putUser(updatedUser);
                   setEditing(prevState => !prevState);
+                  dispatch(authCheck());
                   setAsyncCallStatus(asyncOperation.SUCCESS);
             }
             catch (error) {
