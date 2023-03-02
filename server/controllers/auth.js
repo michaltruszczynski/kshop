@@ -24,7 +24,7 @@ exports.postSignup = async (req, res, next) => {
       const userRole = await UserRole.findOne({ name: signupUserRole });
 
       const hashedPassword = await bcryptjs.hash(password, 12);
-      console.log(hashedPassword);
+
       const newUser = new User({
          name,
          email,
@@ -33,7 +33,7 @@ exports.postSignup = async (req, res, next) => {
       });
 
       const result = await newUser.save();
-      console.log(result);
+      
       res.status(200).json({ message: 'User created', userId: result._id });
    } catch (error) {
       if (!error.statusCode) {
@@ -45,7 +45,6 @@ exports.postSignup = async (req, res, next) => {
 
 exports.postSignin = async (req, res, next) => {
    const { email, password } = req.body;
-   console.log(email, password);
 
    try {
       const user = await User.findOne({ email: email })

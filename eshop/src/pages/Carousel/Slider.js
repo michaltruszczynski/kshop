@@ -46,7 +46,6 @@ const Slider = ({ autoPlay }) => {
       }, [width, autoPlay, nextSlide, smoothTransition]);
 
       useLayoutEffect(() => {
-            console.log('effect', width);
             if (!width) return;
             setState({
                   ...state,
@@ -60,7 +59,6 @@ const Slider = ({ autoPlay }) => {
       }, [transition, state]);
 
       const smoothTransition = () => {
-            console.log('smoothtransition');
             setState((state) => {
                   let _slides = [];
                   const { activeIndex } = state;
@@ -99,8 +97,6 @@ const Slider = ({ autoPlay }) => {
                   translate: 0
             });
       }
-
-      console.log('testing', e1)
 
       return (
             <div className={styles['slider']} ref={refEl}>

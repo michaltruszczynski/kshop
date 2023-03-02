@@ -11,8 +11,6 @@ const { dispatch } = store;
 
 const API_URL =  isDev() ? 'http://localhost:5000/api' : process.env.REACT_APP_API_URL;
 
-console.log(process.env.NODE_ENV)
-
 export const axiosInstance = axios.create({
       baseURL: API_URL
 });

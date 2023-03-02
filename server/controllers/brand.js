@@ -6,7 +6,6 @@ const { deleteFilesFromS3, copyFilesS3Promise } = require('../middleware/utility
 const getParsedFileName = (fileNameJSON) => {
    if (!fileNameJSON) return [];
    if (!Array.isArray(fileNameJSON)) {
-      console.log('JSON.parse(fileNameJSON): ', JSON.parse(fileNameJSON));
       return [JSON.parse(fileNameJSON)];
    }
    return fileNameJSON.map((singlefilenameJSON) => JSON.parse(singlefilenameJSON));

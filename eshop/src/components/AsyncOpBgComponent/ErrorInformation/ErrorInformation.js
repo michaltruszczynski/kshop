@@ -9,7 +9,7 @@ const ErrorInformation = ({ error, children, showErrorMessage = false }) => {
 
       const location = useLocation();
       const { pathname } = location;
-console.log(error)
+
       useEffect(() => {
             if (!showErrorMessage || !error) return;
 

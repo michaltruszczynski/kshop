@@ -39,7 +39,6 @@ const deleteFilesOnDataErrorS3 = async (req, res, next) => {
 }
 
 const copyFilesS3Promise = async (filesList) => {
-      console.log('copyFilesS3_filesList: ', filesList)
       if (!filesList.length) return [];
       let imagesData = [];
 
@@ -61,8 +60,6 @@ const copyFilesS3Promise = async (filesList) => {
       })
 
       const filesCopied = await Promise.all(promisesList);
-
-      console.log('copyFilesS3: ', imagesData);
 
       return imagesData;
 }

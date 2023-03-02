@@ -9,7 +9,6 @@ const userSignupValidation = () => {
             .withMessage('Please enter a valid email.')
             .custom((value, { req }) => {
                 return User.findOne({ email: value }).then(userDoc => {
-                    console.log(userDoc)
                     if (userDoc) {
                         return Promise.reject('Email already exists. Please enter different one.')
                     }
@@ -32,7 +31,6 @@ const userSignupValidation = () => {
         body('confirmPassword')
             .trim()
             .custom((value, { req }) => {
-                console.log(typeof (value), req.body.password)
                 if (value !== req.body.password) {
                     throw new Error('Passwords do not match.')
                 }

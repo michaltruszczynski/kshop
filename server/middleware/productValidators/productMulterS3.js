@@ -50,7 +50,6 @@ const productImageMulterValidationS3 = (req, res, next) => {
             }
 
             if (error instanceof multer.MulterError) {
-                  // console.log('MulterError: ', error.message)
                   if (error.message) {
                         errorMessage.msg = error.message
                   }
@@ -58,7 +57,6 @@ const productImageMulterValidationS3 = (req, res, next) => {
                   return next();
 
             } else if (error) {
-                  // console.log('Error from multer: ', error.message);
                   if (error.message) {
                         errorMessage.msg = error.message
                   }
