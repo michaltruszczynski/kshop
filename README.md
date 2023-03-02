@@ -6,7 +6,6 @@ MERN stack e-commerce project. A single page application which allows:
 
 ## Demo
 This application is deployed on Render: https://eshop-54sk.onrender.com
-**Please note: App is deployed on Render free tier. As this is free account page will act slow on first initial loads.**
 
 New user always get client role (default settings). Change your user role using edit user page. User can only change its own role. Details of other users are hidden.</br>
 Please go to Main Feature section to find out more about each role defined actions
@@ -23,7 +22,6 @@ Project is created with:</br>
     * employee,
     * administrator
 
-
  * Buyer functionality
     A buyer can browse through products and filter using following categories:
     * product type,
@@ -36,7 +34,7 @@ Project is created with:</br>
     Order is included on buyer order list once server receives confirmation from Stripe that funds have been successfully transferred.
 
 * Employee functionality
-Manage products available in eshop, that is:
+    Manage products available in eshop, that is:
     * add and edit brand,
     * add and edit size system,
     * add and edit product,
@@ -45,8 +43,8 @@ Manage products available in eshop, that is:
     Brand, size system, product created by other employees can be used as template to create new entry.
 
 * Administrator functionality
-**Caveat:** For demo and testing purposes administrator role was removed.</br>
-Administrator is allowed to perform the same operation as employee and additionally can change given user role.
+    **Caveat:** For demo and testing purposes administrator role was removed.</br>
+    Administrator is allowed to perform the same operation as employee and additionally can change given user role.
 
 * Product form inputs:
     * availability,
